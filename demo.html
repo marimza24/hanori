@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Prueba Hanori | Rosco Hangul</title>
+
+  <meta
+    name="description"
+    content="Prueba una pequeña versión web de Hanori y practica vocabulario coreano jugando."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --cream: #fbf4ed;
+      --cream-dark: #eee2d8;
+
+      --pink: #d6a4a6;
+      --pink-soft: #f3dddd;
+
+      --blue: #9ebacb;
+      --blue-soft: #e7f0f6;
+
+      --brown: #604554;
+      --brown-dark: #302528;
+
+      --text: #3f3638;
+      --muted: #7f7173;
+
+      --correct: #9fc9a6;
+      --wrong: #dda4a4;
+      --passed: #ead27e;
+
+      --pending: #ffffff;
+      --current: #ffffff;
+
+      --shadow: 0 18px 50px rgba(80, 60, 65, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family: "Nunito", sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(214,164,166,.25),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(158,186,203,.28),
+          transparent 38%
+        ),
+        #fbf8f5;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* APP */
+
+    .demo-page {
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* TOP BAR */
+
+    .topbar {
+      width: 100%;
+      max-width: 1000px;
+
+      margin: 0 auto;
+
+      padding: 18px 24px 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      text-decoration: none;
+
+      color: var(--brown);
+
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 13px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+
+      padding: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 0;
+      border-radius: 14px;
+
+      background: rgba(255,255,255,.68);
+
+      cursor: pointer;
+
+      transition:
+        transform .18s ease,
+        background .18s ease;
+    }
+
+    .icon-button:hover {
+      transform: translateY(-2px);
+
+      background: rgba(255,255,255,.95);
+    }
+
+    .icon-button img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+    }
+
+
+    /* GAME */
+
+    .game-shell {
+      width: 100%;
+      max-width: 760px;
+
+      margin: auto;
+
+      padding: 18px 24px 36px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+    }
+
+
+    /* HEADER */
+
+    .game-header {
+      width: 100%;
+
+      margin-bottom: 4px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      font-weight: 800;
+      font-size: 1.05rem;
+
+      color: var(--brown-dark);
+    }
+
+    .timer,
+    .score {
+      white-space: nowrap;
+    }
+
+
+    /* ROSCO */
+
+    .rosco-area {
+      width: min(520px, 94vw);
+      aspect-ratio: 1 / 1;
+
+      position: relative;
+
+      margin: 2px auto 0;
+    }
+
+    #roscoSvg {
+      width: 100%;
+      height: 100%;
+
+      overflow: visible;
+    }
+
+    .rosco-circle {
+      transition:
+        fill .25s ease,
+        stroke .25s ease,
+        transform .25s ease;
+
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .rosco-circle.pending {
+      fill: var(--pending);
+      stroke: #302528;
+    }
+
+    .rosco-circle.current {
+      fill: #ffffff;
+      stroke: #302528;
+
+      stroke-width: 4;
+
+      transform: scale(1.08);
+    }
+
+    .rosco-circle.correct {
+      fill: var(--correct);
+      stroke: #52795a;
+    }
+
+    .rosco-circle.wrong {
+      fill: var(--wrong);
+      stroke: #9d6060;
+    }
+
+    .rosco-circle.passed {
+      fill: var(--passed);
+      stroke: #ad9341;
+    }
+
+    .rosco-letter {
+      fill: #2e292a;
+
+      font-size: 21px;
+      font-weight: 800;
+
+      text-anchor: middle;
+      dominant-baseline: middle;
+
+      pointer-events: none;
+    }
+
+    .sejong-wrap {
+      width: 44%;
+      aspect-ratio: 1 / 1;
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sejong-wrap img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 12px 18px rgba(70,55,60,.10)
+        );
+    }
+
+
+    /* QUESTION */
+
+    .question-card {
+      width: 100%;
+      max-width: 620px;
+
+      margin-top: -8px;
+
+      padding: 22px 26px 24px;
+
+      background: rgba(255,255,255,.82);
+
+      border: 1px solid rgba(96,69,84,.08);
+
+      border-radius: 28px;
+
+      box-shadow: var(--shadow);
+
+      text-align: center;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .initial-label {
+      margin-bottom: 4px;
+
+      color: var(--pink);
+
+      font-size: .82rem;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+    }
+
+    .clue {
+      margin: 0;
+
+      color: var(--brown-dark);
+
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+
+      line-height: 1.35;
+
+      font-weight: 800;
+    }
+
+    .example {
+      min-height: 24px;
+
+      margin: 12px 0 0;
+
+      color: var(--muted);
+
+      line-height: 1.5;
+
+      font-size: .98rem;
+    }
+
+    .example.hidden {
+      visibility: hidden;
+    }
+
+
+    /* ANSWER */
+
+    .answer-form {
+      width: 100%;
+
+      margin-top: 20px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .answer-input {
+      width: 100%;
+
+      padding: 15px 18px;
+
+      border: 2px solid rgba(96,69,84,.16);
+
+      border-radius: 16px;
+
+      outline: none;
+
+      background: #ffffff;
+
+      color: var(--text);
+
+      font-size: 1.12rem;
+
+      text-align: center;
+
+      transition:
+        border .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .answer-input:focus {
+      border-color: var(--pink);
+
+      box-shadow:
+        0 0 0 4px rgba(214,164,166,.16);
+    }
+
+    .answer-input:disabled {
+      background: rgba(255,255,255,.62);
+
+      color: var(--muted);
+    }
+
+
+    /* FEEDBACK */
+
+    .feedback {
+      min-height: 28px;
+
+      margin-top: 12px;
+
+      font-size: .98rem;
+      font-weight: 800;
+    }
+
+    .feedback.correct {
+      color: #52795a;
+    }
+
+    .feedback.wrong {
+      color: #a35f5f;
+    }
+
+
+    /* BUTTONS */
+
+    .game-buttons {
+      width: 100%;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+    }
+
+    .game-button {
+      min-height: 52px;
+
+      padding: 13px 18px;
+
+      border: 0;
+      border-radius: 18px;
+
+      cursor: pointer;
+
+      font-size: .98rem;
+      font-weight: 800;
+
+      transition:
+        transform .18s ease,
+        opacity .18s ease;
+    }
+
+    .game-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .game-button:active {
+      transform: translateY(0);
+    }
+
+    .pass-button {
+      background: var(--cream-dark);
+
+      color: var(--brown);
+    }
+
+    .check-button {
+      background: var(--brown-dark);
+
+      color: white;
+    }
+
+
+    /* DEMO LABEL */
+
+    .demo-note {
+      margin: 15px 0 0;
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      text-align: center;
+    }
+
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      padding: 22px;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(44,37,40,.38);
+
+      z-index: 100;
+    }
+
+    .modal.visible {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(430px, 100%);
+
+      padding: 30px 26px;
+
+      background: rgba(255,255,255,.98);
+
+      border-radius: 30px;
+
+      box-shadow:
+        0 30px 80px rgba(40,30,35,.25);
+
+      text-align: center;
+    }
+
+    .modal-card h2 {
+      margin: 0 0 10px;
+
+      color: var(--brown);
+
+      font-size: 1.8rem;
+    }
+
+    .modal-card p {
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.65;
+    }
+
+    .modal-buttons {
+      margin-top: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .modal-button {
+      width: 100%;
+
+      padding: 14px 18px;
+
+      border: 0;
+      border-radius: 17px;
+
+      cursor: pointer;
+
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .modal-primary {
+      background: var(--brown-dark);
+
+      color: white;
+    }
+
+    .modal-secondary {
+      background: var(--cream-dark);
+
+      color: var(--brown);
+    }
+
+
+    /* RESULTS */
+
+    .result-stats {
+      margin-top: 24px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 10px;
+    }
+
+    .result-stat {
+      padding: 16px 8px;
+
+      border-radius: 18px;
+
+      background: var(--cream);
+    }
+
+    .result-number {
+      display: block;
+
+      font-size: 1.7rem;
+      font-weight: 800;
+
+      color: var(--brown);
+    }
+
+    .result-label {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: .78rem;
+    }
+
+    .final-score {
+      margin-top: 20px;
+
+      color: var(--brown);
+
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media (max-width: 650px) {
+
+      .topbar {
+        padding:
+          14px 16px
+          0;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .game-shell {
+        padding:
+          12px 16px
+          28px;
+      }
+
+      .game-header {
+        padding: 0 4px;
+
+        font-size: .96rem;
+      }
+
+      .rosco-area {
+        width: min(450px, 96vw);
+      }
+
+      .question-card {
+        margin-top: -4px;
+
+        padding:
+          20px 18px
+          21px;
+
+        border-radius: 24px;
+      }
+
+    }
+
+
+    @media (max-width: 430px) {
+
+      .topbar {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .icon-button {
+        width: 38px;
+        height: 38px;
+      }
+
+      .game-shell {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .rosco-area {
+        width: 100%;
+      }
+
+      .sejong-wrap {
+        width: 42%;
+      }
+
+      .question-card {
+        margin-top: -2px;
+      }
+
+      .game-buttons {
+        gap: 9px;
+      }
+
+      .game-button {
+        min-height: 50px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+        font-size: .91rem;
+      }
+
+      .result-stats {
+        gap: 6px;
+      }
+
+      .result-stat {
+        padding:
+          13px 5px;
+      }
+
+    }
+
+
+    @media (max-width: 350px) {
+
+      .game-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .rosco-letter {
+        font-size: 19px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<div class="demo-page">
+
+
+  <header class="topbar">
+
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Volver a Hanori"
+    >
+      <img
+        src="assets/hanori_logoapp.png"
+        alt="Hanori"
+      >
+
+      <span>Hanori</span>
+    </a>
+
+
+    <div class="top-actions">
+
+      <button
+        type="button"
+        class="icon-button"
+        id="pauseButton"
+        aria-label="Pausar partida"
+      >
+        <img
+          src="assets/icon_pause.png"
+          alt=""
+        >
+      </button>
+
+
+      <button
+        type="button"
+        class="icon-button"
+        id="exitButton"
+        aria-label="Salir de la demo"
+      >
+        <img
+          src="assets/icon_exit.png"
+          alt=""
+        >
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="game-shell">
+
+
+    <div class="game-header">
+
+      <div
+        class="timer"
+        id="timer"
+      >
+        ⏱ 00:00
+      </div>
+
+      <div
+        class="score"
+        id="score"
+      >
+        ⭐ 0
+      </div>
+
+    </div>
+
+
+
+    <div class="rosco-area">
+
+      <svg
+        id="roscoSvg"
+        viewBox="0 0 500 500"
+        role="img"
+        aria-label="Rosco de consonantes Hangul"
+      ></svg>
+
+
+      <div class="sejong-wrap">
+
+        <img
+          src="assets/rey_sejong.png"
+          alt="Representación del Rey Sejong"
+        >
+
+      </div>
+
+    </div>
+
+
+
+    <section class="question-card">
+
+      <div
+        class="initial-label"
+        id="initialLabel"
+      >
+        Comienza con ㄱ
+      </div>
+
+
+      <h1
+        class="clue"
+        id="clue"
+      >
+        Cargando...
+      </h1>
+
+
+      <p
+        class="example hidden"
+        id="example"
+      >
+        Ejemplo
+      </p>
+
+
+      <form
+        class="answer-form"
+        id="answerForm"
+      >
+
+        <input
+          type="text"
+          class="answer-input"
+          id="answerInput"
+          placeholder="Escribe la respuesta en coreano"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+
+
+        <div
+          class="feedback"
+          id="feedback"
+        ></div>
+
+
+        <div class="game-buttons">
+
+          <button
+            type="button"
+            class="game-button pass-button"
+            id="passButton"
+          >
+            PASAR
+          </button>
+
+
+          <button
+            type="submit"
+            class="game-button check-button"
+            id="checkButton"
+          >
+            COMPROBAR
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <p class="demo-note">
+        Demo web de Hanori · Rosco Hangul
+      </p>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+
+<!-- PAUSA -->
+
+<div
+  class="modal"
+  id="pauseModal"
+>
+
+  <div class="modal-card">
+
+    <h2>Partida pausada</h2>
+
+    <p>
+      El tiempo se ha detenido.
+      Puedes continuar cuando quieras.
+    </p>
+
+
+    <div class="modal-buttons">
+
+      <button
+        type="button"
+        class="modal-button modal-primary"
+        id="continueButton"
+      >
+        CONTINUAR
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-button modal-secondary"
+        id="pauseExitButton"
+      >
+        VOLVER A HANORI
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- RESULTADO -->
+
+<div
+  class="modal"
+  id="resultModal"
+>
+
+  <div class="modal-card">
+
+    <h2>¡Partida terminada!</h2>
+
+    <p>
+      Has completado esta pequeña demo
+      del Rosco Hangul.
+    </p>
+
+
+    <div class="result-stats">
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="correctResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Correctas
+        </span>
+
+      </div>
+
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="wrongResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Incorrectas
+        </span>
+
+      </div>
+
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="passedResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Pasadas
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="final-score"
+      id="finalScore"
+    >
+      ⭐ 0 puntos
+    </div>
+
+
+    <div class="modal-buttons">
+
+      <button
+        type="button"
+        class="modal-button modal-primary"
+        id="restartButton"
+      >
+        JUGAR OTRA VEZ
+      </button>
+
+
+      <button
+        type="button"
+        class="modal-button modal-secondary"
+        id="resultExitButton"
+      >
+        VOLVER A HANORI
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  /*
+   * ---------------------------------------------------------
+   * MINI BANCO DE PALABRAS
+   * ---------------------------------------------------------
+   *
+   * Esta es solo una pequeña selección para probar
+   * el funcionamiento de la demo.
+   *
+   * Después podemos reemplazarla por una selección
+   * más grande del banco definitivo de Hanori.
+   */
+
+  const wordBank = [
+
+    {
+      initial: "ㅈ",
+      answer: "자기소개",
+      clue: "presentación",
+      category: "vida diaria",
+      level: 1,
+      example: "자기소개를 해 주세요."
+    },
+
+    {
+      initial: "ㅇ",
+      answer: "어느",
+      clue: "cuál",
+      category: "preguntas",
+      level: 1,
+      example: "어느 나라 사람이에요?"
+    },
+
+    {
+      initial: "ㄷ",
+      answer: "도와주다",
+      clue: "ayudar",
+      category: "verbos",
+      level: 1,
+      example: "친구를 도와줘요."
+    },
+
+    {
+      initial: "ㅈ",
+      answer: "지난주",
+      clue: "semana pasada",
+      category: "tiempo",
+      level: 1,
+      example: "지난주에 여행했어요."
+    },
+
+    {
+      initial: "ㅂ",
+      answer: "부르다",
+      clue: "llamar; cantar",
+      category: "verbos",
+      level: 1,
+      example: "친구를 불러요."
+    },
+
+    {
+      initial: "ㅁ",
+      answer: "명사",
+      clue: "sustantivo",
+      category: "gramática",
+      level: 2,
+      example: "명사를 공부해요."
+    },
+
+    {
+      initial: "ㄷ",
+      answer: "동사",
+      clue: "verbo",
+      category: "gramática",
+      level: 2,
+      example: "동사를 배워요."
+    },
+
+    {
+      initial: "ㅎ",
+      answer: "형용사",
+      clue: "adjetivo",
+      category: "gramática",
+      level: 2,
+      example: "형용사를 사용해요."
+    },
+
+    {
+      initial: "ㅍ",
+      answer: "표현",
+      clue: "expresión",
+      category: "gramática",
+      level: 3,
+      example: "새 표현을 배웠어요."
+    },
+
+    {
+      initial: "ㅁ",
+      answer: "문장",
+      clue: "oración",
+      category: "gramática",
+      level: 2,
+      example: "문장을 읽어요."
+    }
+
+  ];
+
+
+
+  /*
+   * Orden utilizado por Hanori para las consonantes.
+   */
+
+  const consonantOrder = [
+    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ",
+    "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ",
+    "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ",
+    "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+  ];
+
+
+
+  /*
+   * ESTADO DEL JUEGO
+   */
+
+  let gameWords = [];
+
+  let statuses = [];
+
+  let passedBefore = [];
+
+  let currentIndex = 0;
+
+  let score = 0;
+
+  let seconds = 0;
+
+  let questionStartSeconds = 0;
+
+  let timerInterval = null;
+
+  let paused = false;
+
+  let finished = false;
+
+
+
+  /*
+   * ELEMENTOS HTML
+   */
+
+  const roscoSvg =
+    document.getElementById("roscoSvg");
+
+  const timerElement =
+    document.getElementById("timer");
+
+  const scoreElement =
+    document.getElementById("score");
+
+  const initialLabel =
+    document.getElementById("initialLabel");
+
+  const clueElement =
+    document.getElementById("clue");
+
+  const exampleElement =
+    document.getElementById("example");
+
+  const answerForm =
+    document.getElementById("answerForm");
+
+  const answerInput =
+    document.getElementById("answerInput");
+
+  const feedbackElement =
+    document.getElementById("feedback");
+
+  const passButton =
+    document.getElementById("passButton");
+
+  const pauseButton =
+    document.getElementById("pauseButton");
+
+  const exitButton =
+    document.getElementById("exitButton");
+
+  const pauseModal =
+    document.getElementById("pauseModal");
+
+  const continueButton =
+    document.getElementById("continueButton");
+
+  const pauseExitButton =
+    document.getElementById("pauseExitButton");
+
+  const resultModal =
+    document.getElementById("resultModal");
+
+  const restartButton =
+    document.getElementById("restartButton");
+
+  const resultExitButton =
+    document.getElementById("resultExitButton");
+
+
+
+  /*
+   * UTILIDADES
+   */
+
+  function randomItem(array) {
+
+    if (!array.length) {
+      return null;
+    }
+
+    return array[
+      Math.floor(
+        Math.random() * array.length
+      )
+    ];
+
+  }
+
+
+
+  function formatTime(totalSeconds) {
+
+    const minutes =
+      Math.floor(totalSeconds / 60);
+
+    const remainingSeconds =
+      totalSeconds % 60;
+
+    return (
+      String(minutes).padStart(2, "0")
+      + ":"
+      + String(remainingSeconds).padStart(2, "0")
+    );
+
+  }
+
+
+
+  /*
+   * Mismo criterio de puntos que Android.
+   */
+
+  function calculatePoints(
+    timeUsed,
+    wasPassed
+  ) {
+
+    let basePoints;
+
+    if (timeUsed <= 5) {
+      basePoints = 10;
+    }
+
+    else if (timeUsed <= 10) {
+      basePoints = 8;
+    }
+
+    else if (timeUsed <= 20) {
+      basePoints = 6;
+    }
+
+    else {
+      basePoints = 4;
+    }
+
+
+    if (wasPassed) {
+
+      return Math.max(
+        2,
+        Math.floor(basePoints / 2)
+      );
+
+    }
+
+
+    return basePoints;
+
+  }
+
+
+
+  /*
+   * Crea una ronda:
+   * una palabra aleatoria para cada consonante
+   * disponible en este mini banco.
+   */
+
+  function createRound() {
+
+    const availableConsonants =
+      consonantOrder.filter(
+        initial =>
+          wordBank.some(
+            word =>
+              word.initial === initial
+          )
+      );
+
+
+    gameWords =
+      availableConsonants.map(
+        initial => {
+
+          const candidates =
+            wordBank.filter(
+              word =>
+                word.initial === initial
+            );
+
+          return randomItem(candidates);
+
+        }
+      );
+
+
+    statuses =
+      gameWords.map(
+        () => "pending"
+      );
+
+
+    passedBefore =
+      gameWords.map(
+        () => false
+      );
+
+
+    if (statuses.length > 0) {
+      statuses[0] = "current";
+    }
+
+  }
+
+
+
+  /*
+   * DIBUJA EL ROSCO
+   */
+
+  function drawRosco() {
+
+    roscoSvg.innerHTML = "";
+
+
+    const total =
+      gameWords.length;
+
+
+    if (!total) {
+      return;
+    }
+
+
+    const centerX = 250;
+    const centerY = 250;
+
+    const radius = 205;
+
+    const circleRadius =
+      total <= 8 ? 29 : 24;
+
+
+    gameWords.forEach(
+      (word, index) => {
+
+        const angle =
+          -Math.PI / 2
+          +
+          (
+            index
+            *
+            (Math.PI * 2 / total)
+          );
+
+
+        const x =
+          centerX
+          +
+          Math.cos(angle) * radius;
+
+
+        const y =
+          centerY
+          +
+          Math.sin(angle) * radius;
+
+
+        const group =
+          document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "g"
+          );
+
+
+        const circle =
+          document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle"
+          );
+
+
+        circle.setAttribute(
+          "cx",
+          x
+        );
+
+        circle.setAttribute(
+          "cy",
+          y
+        );
+
+        circle.setAttribute(
+          "r",
+          circleRadius
+        );
+
+        circle.setAttribute(
+          "stroke-width",
+          "3"
+        );
+
+        circle.setAttribute(
+          "class",
+          "rosco-circle "
+          +
+          statuses[index]
+        );
+
+
+        const text =
+          document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+          );
+
+
+        text.setAttribute(
+          "x",
+          x
+        );
+
+        text.setAttribute(
+          "y",
+          y + 1
+        );
+
+        text.setAttribute(
+          "class",
+          "rosco-letter"
+        );
+
+
+        text.textContent =
+          word.initial;
+
+
+        group.appendChild(circle);
+
+        group.appendChild(text);
+
+        roscoSvg.appendChild(group);
+
+      }
+    );
+
+  }
+
+
+
+  /*
+   * ACTUALIZA PISTA Y EJEMPLO
+   */
+
+  function showCurrentWord() {
+
+    if (!gameWords.length) {
+      return;
+    }
+
+
+    const currentWord =
+      gameWords[currentIndex];
+
+
+    initialLabel.textContent =
+      "Comienza con "
+      +
+      currentWord.initial;
+
+
+    clueElement.textContent =
+      currentWord.clue;
+
+
+    const shouldShowExample =
+      passedBefore[currentIndex];
+
+
+    if (
+      shouldShowExample
+      &&
+      currentWord.example
+    ) {
+
+      exampleElement.textContent =
+        "💡 "
+        +
+        currentWord.example;
+
+      exampleElement.classList.remove(
+        "hidden"
+      );
+
+    }
+
+    else {
+
+      exampleElement.textContent =
+        "Ejemplo";
+
+      exampleElement.classList.add(
+        "hidden"
+      );
+
+    }
+
+
+    feedbackElement.textContent = "";
+
+    feedbackElement.className =
+      "feedback";
+
+
+    answerInput.value = "";
+
+    answerInput.disabled = false;
+
+
+    setTimeout(
+      () => {
+        answerInput.focus();
+      },
+      100
+    );
+
+
+    drawRosco();
+
+  }
+
+
+
+  /*
+   * BUSCA SIGUIENTE PREGUNTA
+   *
+   * Primero busca palabras pendientes.
+   * Cuando ya no quedan, vuelve a las pasadas.
+   */
+
+  function goNext() {
+
+    statuses[currentIndex] =
+      statuses[currentIndex] === "current"
+        ? "pending"
+        : statuses[currentIndex];
+
+
+    let nextIndex = null;
+
+
+    for (
+      let offset = 1;
+      offset <= gameWords.length;
+      offset++
+    ) {
+
+      const candidate =
+        (
+          currentIndex
+          +
+          offset
+        )
+        %
+        gameWords.length;
+
+
+      if (
+        statuses[candidate]
+        ===
+        "pending"
+      ) {
+
+        nextIndex =
+          candidate;
+
+        break;
+
+      }
+
+    }
+
+
+    /*
+     * Segunda vuelta:
+     * buscamos las pasadas.
+     */
+
+    if (nextIndex === null) {
+
+      for (
+        let offset = 1;
+        offset <= gameWords.length;
+        offset++
+      ) {
+
+        const candidate =
+          (
+            currentIndex
+            +
+            offset
+          )
+          %
+          gameWords.length;
+
+
+        if (
+          statuses[candidate]
+          ===
+          "passed"
+        ) {
+
+          nextIndex =
+            candidate;
+
+          break;
+
+        }
+
+      }
+
+    }
+
+
+    if (nextIndex === null) {
+
+      finishGame();
+
+      return;
+
+    }
+
+
+    currentIndex =
+      nextIndex;
+
+
+    statuses[currentIndex] =
+      "current";
+
+
+    questionStartSeconds =
+      seconds;
+
+
+    showCurrentWord();
+
+  }
+
+
+
+  /*
+   * COMPROBAR RESPUESTA
+   */
+
+  function checkAnswer() {
+
+    if (
+      paused
+      ||
+      finished
+    ) {
+      return;
+    }
+
+
+    const currentWord =
+      gameWords[currentIndex];
+
+
+    const userAnswer =
+      answerInput.value.trim();
+
+
+    if (!userAnswer) {
+
+      answerInput.focus();
+
+      return;
+
+    }
+
+
+    const isCorrect =
+      userAnswer
+      ===
+      currentWord.answer.trim();
+
+
+    const wasPassed =
+      passedBefore[currentIndex];
+
+
+    if (isCorrect) {
+
+      const timeUsed =
+        seconds
+        -
+        questionStartSeconds;
+
+
+      const earnedPoints =
+        calculatePoints(
+          timeUsed,
+          wasPassed
+        );
+
+
+      score += earnedPoints;
+
+
+      statuses[currentIndex] =
+        "correct";
+
+
+      feedbackElement.textContent =
+        "O  ¡Correcto!  +"
+        +
+        earnedPoints
+        +
+        " puntos";
+
+
+      feedbackElement.className =
+        "feedback correct";
+
+
+      scoreElement.textContent =
+        "⭐ "
+        +
+        score;
+
+
+      answerInput.disabled =
+        true;
+
+
+      drawRosco();
+
+
+      setTimeout(
+        goNext,
+        750
+      );
+
+    }
+
+    else {
+
+      statuses[currentIndex] =
+        "wrong";
+
+
+      feedbackElement.textContent =
+        "X  "
+        +
+        currentWord.answer;
+
+
+      feedbackElement.className =
+        "feedback wrong";
+
+
+      answerInput.disabled =
+        true;
+
+
+      drawRosco();
+
+
+      setTimeout(
+        goNext,
+        1200
+      );
+
+    }
+
+  }
+
+
+
+  /*
+   * PASAR
+   */
+
+  function passWord() {
+
+    if (
+      paused
+      ||
+      finished
+    ) {
+      return;
+    }
+
+
+    passedBefore[currentIndex] =
+      true;
+
+
+    statuses[currentIndex] =
+      "passed";
+
+
+    drawRosco();
+
+
+    setTimeout(
+      goNext,
+      160
+    );
+
+  }
+
+
+
+  /*
+   * TEMPORIZADOR
+   */
+
+  function startTimer() {
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    timerInterval =
+      setInterval(
+        () => {
+
+          if (
+            !paused
+            &&
+            !finished
+          ) {
+
+            seconds++;
+
+
+            timerElement.textContent =
+              "⏱ "
+              +
+              formatTime(seconds);
+
+          }
+
+        },
+        1000
+      );
+
+  }
+
+
+
+  /*
+   * PAUSA
+   */
+
+  function pauseGame() {
+
+    if (finished) {
+      return;
+    }
+
+
+    paused = true;
+
+
+    pauseModal.classList.add(
+      "visible"
+    );
+
+  }
+
+
+
+  function continueGame() {
+
+    paused = false;
+
+
+    questionStartSeconds =
+      seconds;
+
+
+    pauseModal.classList.remove(
+      "visible"
+    );
+
+
+    setTimeout(
+      () => {
+        answerInput.focus();
+      },
+      100
+    );
+
+  }
+
+
+
+  /*
+   * FINAL
+   */
+
+  function finishGame() {
+
+    finished = true;
+
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    const correct =
+      statuses.filter(
+        status =>
+          status === "correct"
+      ).length;
+
+
+    const wrong =
+      statuses.filter(
+        status =>
+          status === "wrong"
+      ).length;
+
+
+    const passed =
+      passedBefore.filter(
+        value =>
+          value
+      ).length;
+
+
+    document
+      .getElementById(
+        "correctResult"
+      )
+      .textContent =
+      correct;
+
+
+    document
+      .getElementById(
+        "wrongResult"
+      )
+      .textContent =
+      wrong;
+
+
+    document
+      .getElementById(
+        "passedResult"
+      )
+      .textContent =
+      passed;
+
+
+    document
+      .getElementById(
+        "finalScore"
+      )
+      .textContent =
+      "⭐ "
+      +
+      score
+      +
+      " puntos · ⏱ "
+      +
+      formatTime(seconds);
+
+
+    resultModal.classList.add(
+      "visible"
+    );
+
+  }
+
+
+
+  /*
+   * NUEVA PARTIDA
+   */
+
+  function startGame() {
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    currentIndex = 0;
+
+    score = 0;
+
+    seconds = 0;
+
+    questionStartSeconds = 0;
+
+    paused = false;
+
+    finished = false;
+
+
+    timerElement.textContent =
+      "⏱ 00:00";
+
+
+    scoreElement.textContent =
+      "⭐ 0";
+
+
+    resultModal.classList.remove(
+      "visible"
+    );
+
+
+    pauseModal.classList.remove(
+      "visible"
+    );
+
+
+    createRound();
+
+    showCurrentWord();
+
+    startTimer();
+
+  }
+
+
+
+  /*
+   * SALIR
+   */
+
+  function exitDemo() {
+
+    window.location.href =
+      "index.html";
+
+  }
+
+
+
+  /*
+   * EVENTOS
+   */
+
+  answerForm.addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+      checkAnswer();
+
+    }
+  );
+
+
+  passButton.addEventListener(
+    "click",
+    passWord
+  );
+
+
+  pauseButton.addEventListener(
+    "click",
+    pauseGame
+  );
+
+
+  exitButton.addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+  continueButton.addEventListener(
+    "click",
+    continueGame
+  );
+
+
+  pauseExitButton.addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+  resultExitButton.addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+  restartButton.addEventListener(
+    "click",
+    startGame
+  );
+
+
+
+  /*
+   * INICIO
+   */
+
+  startGame();
+
+</script>
+
+</body>
+</html>
