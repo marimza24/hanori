@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Hanori | Aprende coreano jugando</title>
 
@@ -11,16 +17,28 @@
     content="Hanori es una aplicación para aprender y practicar vocabulario coreano jugando."
   >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
+
   <style>
+
     :root {
+
       --cream: #fbf4ed;
       --cream-dark: #eee2d8;
 
@@ -38,276 +56,495 @@
 
       --white: #ffffff;
 
-      --shadow: 0 18px 50px rgba(80, 60, 65, 0.10);
+      --shadow:
+        0 18px 50px
+        rgba(80, 60, 65, 0.10);
+
     }
+
 
     * {
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
+
       margin: 0;
-      font-family: "Nunito", sans-serif;
-      color: var(--text);
+
+      font-family:
+        "Nunito",
+        sans-serif;
+
+      color:
+        var(--text);
 
       background:
+
         radial-gradient(
           circle at top left,
           rgba(214, 164, 166, 0.22),
           transparent 32%
         ),
+
         radial-gradient(
           circle at bottom right,
           rgba(158, 186, 203, 0.25),
           transparent 35%
         ),
+
         #fbf8f5;
+
     }
+
 
     img {
       max-width: 100%;
       height: auto;
     }
 
+
     a {
       color: inherit;
     }
 
 
+
     /* NAV */
 
     nav {
+
       width: 100%;
       max-width: 1150px;
 
       margin: auto;
-      padding: 22px 28px;
+
+      padding:
+        22px
+        28px;
 
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
 
       gap: 20px;
+
     }
 
+
     .nav-logo {
+
       display: flex;
-      align-items: center;
+
+      align-items:
+        center;
 
       gap: 12px;
 
       font-weight: 800;
-      color: var(--brown);
 
-      text-decoration: none;
+      color:
+        var(--brown);
 
-      flex-shrink: 0;
+      text-decoration:
+        none;
+
+      flex-shrink:
+        0;
+
     }
 
+
     .nav-logo img {
+
       width: 48px;
       height: 48px;
 
-      object-fit: cover;
+      object-fit:
+        cover;
 
-      border-radius: 14px;
+      border-radius:
+        14px;
+
     }
+
 
     .nav-links {
+
       display: flex;
-      align-items: center;
 
-      gap: 26px;
+      align-items:
+        center;
 
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 24px;
+
+      flex-wrap:
+        wrap;
+
+      justify-content:
+        flex-end;
+
     }
+
 
     .nav-links a {
-      text-decoration: none;
 
-      color: var(--muted);
+      text-decoration:
+        none;
 
-      font-weight: 600;
-      font-size: 0.95rem;
+      color:
+        var(--muted);
 
-      white-space: nowrap;
+      font-weight:
+        600;
+
+      font-size:
+        0.95rem;
+
+      white-space:
+        nowrap;
+
     }
+
 
     .nav-links a:hover {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
+
+
+    .nav-demo {
+
+      padding:
+        10px
+        16px;
+
+      border-radius:
+        14px;
+
+      background:
+        var(--brown-dark);
+
+      color:
+        white !important;
+
+    }
+
+
+    .nav-demo:hover {
+
+      opacity:
+        .9;
+
+    }
+
 
 
     /* HERO */
 
     .hero {
+
       width: 100%;
       max-width: 1150px;
 
-      margin: 20px auto 0;
+      margin:
+        20px
+        auto
+        0;
 
-      padding: 60px 28px 80px;
+      padding:
+        60px
+        28px
+        80px;
 
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 0.85fr);
 
       gap: 70px;
 
-      align-items: center;
+      align-items:
+        center;
+
     }
+
 
     .hero-text {
+
       width: 100%;
-      max-width: 570px;
+
+      max-width:
+        570px;
+
     }
+
 
     .main-logo {
-      width: 270px;
-      max-width: 80%;
 
-      display: block;
+      width:
+        270px;
 
-      margin: 0 auto 28px;
+      max-width:
+        80%;
+
+      display:
+        block;
+
+      margin:
+        0 auto 28px;
+
     }
+
 
     .eyebrow {
-      display: table;
 
-      padding: 8px 14px;
+      display:
+        table;
 
-      background: var(--pink-soft);
+      padding:
+        8px 14px;
 
-      color: var(--brown);
+      background:
+        var(--pink-soft);
 
-      border-radius: 100px;
+      color:
+        var(--brown);
 
-      font-size: 0.88rem;
-      font-weight: 700;
+      border-radius:
+        100px;
 
-      margin: 0 auto 24px;
+      font-size:
+        0.88rem;
+
+      font-weight:
+        700;
+
+      margin:
+        0 auto 24px;
+
     }
+
 
     h1 {
-      margin: 0 0 22px;
 
-      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      margin:
+        0 0 22px;
 
-      line-height: 1.05;
+      font-size:
+        clamp(
+          2.6rem,
+          6vw,
+          4.6rem
+        );
 
-      color: var(--brown);
+      line-height:
+        1.05;
 
-      letter-spacing: -1.5px;
+      color:
+        var(--brown);
+
+      letter-spacing:
+        -1.5px;
+
     }
+
 
     .hero-text > p {
-      max-width: 520px;
 
-      margin: 0 0 30px;
+      max-width:
+        520px;
 
-      font-size: 1.14rem;
+      margin:
+        0 0 30px;
 
-      line-height: 1.8;
+      font-size:
+        1.14rem;
 
-      color: var(--muted);
+      line-height:
+        1.8;
+
+      color:
+        var(--muted);
+
     }
+
 
     .hero-buttons {
+
       display: flex;
+
       gap: 14px;
 
-      flex-wrap: wrap;
+      flex-wrap:
+        wrap;
+
     }
+
 
     .button {
-      display: inline-block;
 
-      padding: 14px 22px;
+      display:
+        inline-block;
 
-      border-radius: 16px;
+      padding:
+        14px 22px;
 
-      text-decoration: none;
+      border-radius:
+        16px;
 
-      font-weight: 700;
+      text-decoration:
+        none;
 
-      transition: 0.2s ease;
+      font-weight:
+        700;
+
+      transition:
+        0.2s ease;
+
     }
+
 
     .button-primary {
-      background: var(--brown-dark);
 
-      color: white;
+      background:
+        var(--brown-dark);
+
+      color:
+        white;
+
     }
+
 
     .button-primary:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
+
     }
+
 
     .button-secondary {
-      background: var(--cream-dark);
 
-      color: var(--brown);
+      background:
+        var(--cream-dark);
+
+      color:
+        var(--brown);
+
     }
+
 
     .button-secondary:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
+
     }
+
 
 
     /* HERO PHONE */
 
     .hero-phone {
+
       display: flex;
-      justify-content: center;
-      align-items: center;
 
-      position: relative;
+      justify-content:
+        center;
 
-      min-width: 0;
+      align-items:
+        center;
+
+      position:
+        relative;
+
+      min-width:
+        0;
+
     }
 
+
     .hero-phone::before {
-      content: "";
 
-      position: absolute;
+      content:
+        "";
 
-      width: min(390px, 90vw);
-      aspect-ratio: 1 / 1;
+      position:
+        absolute;
 
-      border-radius: 50%;
+      width:
+        min(
+          390px,
+          90vw
+        );
+
+      aspect-ratio:
+        1 / 1;
+
+      border-radius:
+        50%;
 
       background:
+
         linear-gradient(
           135deg,
           var(--pink-soft),
           var(--blue-soft)
         );
 
-      z-index: -1;
+      z-index:
+        -1;
 
-      top: 90px;
+      top:
+        90px;
+
     }
+
 
     .hero-phone img {
-      width: min(330px, 85vw);
 
-      display: block;
+      width:
+        min(
+          330px,
+          85vw
+        );
 
-      border-radius: 36px;
+      display:
+        block;
+
+      border-radius:
+        36px;
 
       box-shadow:
-        0 24px 32px rgba(65, 50, 55, 0.18);
+        0 24px 32px
+        rgba(65, 50, 55, 0.18);
 
-      transition: 0.3s ease;
+      transition:
+        0.3s ease;
+
     }
+
 
     .hero-phone img:hover {
-      transform: translateY(-5px);
+
+      transform:
+        translateY(-5px);
+
     }
+
 
 
     /* SECTIONS */
@@ -316,594 +553,1467 @@
       scroll-margin-top: 40px;
     }
 
+
     .section {
+
       width: 100%;
-      max-width: 1100px;
 
-      margin: auto;
+      max-width:
+        1100px;
 
-      padding: 90px 28px;
+      margin:
+        auto;
+
+      padding:
+        90px 28px;
+
     }
+
 
     .section-heading {
-      max-width: 680px;
 
-      margin: 0 auto 55px;
+      max-width:
+        680px;
 
-      text-align: center;
+      margin:
+        0 auto 55px;
+
+      text-align:
+        center;
+
     }
+
 
     .section-heading span {
-      color: var(--pink);
 
-      font-weight: 800;
+      color:
+        var(--pink);
 
-      letter-spacing: 0.5px;
+      font-weight:
+        800;
+
+      letter-spacing:
+        0.5px;
+
     }
+
 
     .section-heading h2 {
-      margin: 8px 0 16px;
 
-      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin:
+        8px 0 16px;
 
-      color: var(--brown);
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          2.8rem
+        );
+
+      color:
+        var(--brown);
+
     }
+
 
     .section-heading p {
-      margin: 0;
 
-      color: var(--muted);
+      margin:
+        0;
 
-      line-height: 1.7;
+      color:
+        var(--muted);
+
+      line-height:
+        1.7;
+
     }
+
 
 
     /* FEATURES */
 
     .features {
-      display: grid;
 
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display:
+        grid;
 
-      gap: 20px;
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0, 1fr)
+        );
+
+      gap:
+        20px;
+
     }
+
 
     .feature {
-      padding: 30px;
 
-      border-radius: 26px;
+      padding:
+        30px;
 
-      background: rgba(255, 255, 255, 0.78);
+      border-radius:
+        26px;
 
-      box-shadow: var(--shadow);
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.78
+        );
 
-      border: 1px solid rgba(210, 185, 180, 0.25);
+      box-shadow:
+        var(--shadow);
+
+      border:
+        1px solid
+        rgba(
+          210,
+          185,
+          180,
+          0.25
+        );
+
     }
+
 
     .feature-icon {
-      width: 50px;
-      height: 50px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        50px;
 
-      border-radius: 15px;
+      height:
+        50px;
 
-      background: var(--pink-soft);
+      display:
+        flex;
 
-      font-size: 1.4rem;
+      align-items:
+        center;
 
-      margin-bottom: 20px;
+      justify-content:
+        center;
+
+      border-radius:
+        15px;
+
+      background:
+        var(--pink-soft);
+
+      font-size:
+        1.4rem;
+
+      margin-bottom:
+        20px;
+
     }
 
-    .feature:nth-child(2) .feature-icon {
-      background: var(--blue-soft);
+
+    .feature:nth-child(2)
+    .feature-icon {
+
+      background:
+        var(--blue-soft);
+
     }
 
-    .feature:nth-child(3) .feature-icon {
-      background: var(--cream-dark);
+
+    .feature:nth-child(3)
+    .feature-icon {
+
+      background:
+        var(--cream-dark);
+
     }
+
 
     .feature h3 {
-      margin: 0 0 10px;
 
-      color: var(--brown);
+      margin:
+        0 0 10px;
 
-      font-size: 1.2rem;
+      color:
+        var(--brown);
+
+      font-size:
+        1.2rem;
+
     }
+
 
     .feature p {
-      margin: 0;
 
-      color: var(--muted);
+      margin:
+        0;
 
-      line-height: 1.7;
+      color:
+        var(--muted);
+
+      line-height:
+        1.7;
+
     }
+
+
+
+    /* DEMO */
+
+    .demo-section {
+
+      max-width:
+        960px;
+
+      margin:
+        auto;
+
+      padding:
+        15px 28px
+        90px;
+
+    }
+
+
+    .demo-card {
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      padding:
+        55px 48px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap:
+        45px;
+
+      align-items:
+        center;
+
+      border-radius:
+        34px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          rgba(
+            243,
+            221,
+            221,
+            .95
+          ),
+          rgba(
+            231,
+            240,
+            246,
+            .95
+          )
+        );
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .demo-card::after {
+
+      content:
+        "한";
+
+      position:
+        absolute;
+
+      right:
+        -18px;
+
+      bottom:
+        -65px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .38
+        );
+
+      font-size:
+        12rem;
+
+      font-weight:
+        800;
+
+      line-height:
+        1;
+
+      pointer-events:
+        none;
+
+    }
+
+
+    .demo-content {
+
+      position:
+        relative;
+
+      z-index:
+        1;
+
+      max-width:
+        590px;
+
+    }
+
+
+    .demo-label {
+
+      display:
+        inline-block;
+
+      margin-bottom:
+        10px;
+
+      color:
+        var(--brown);
+
+      font-size:
+        .82rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .08em;
+
+    }
+
+
+    .demo-card h2 {
+
+      margin:
+        0 0 14px;
+
+      color:
+        var(--brown);
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          2.8rem
+        );
+
+      line-height:
+        1.15;
+
+    }
+
+
+    .demo-card p {
+
+      margin:
+        0 0 25px;
+
+      max-width:
+        560px;
+
+      color:
+        var(--muted);
+
+      line-height:
+        1.75;
+
+    }
+
+
+    .demo-play {
+
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-width:
+        180px;
+
+      min-height:
+        58px;
+
+      padding:
+        15px 24px;
+
+      border-radius:
+        19px;
+
+      background:
+        var(--brown-dark);
+
+      color:
+        white;
+
+      text-decoration:
+        none;
+
+      font-weight:
+        800;
+
+      box-shadow:
+        0 12px 25px
+        rgba(
+          48,
+          37,
+          40,
+          .16
+        );
+
+      transition:
+        transform .2s ease;
+
+    }
+
+
+    .demo-play:hover {
+
+      transform:
+        translateY(-3px);
+
+    }
+
 
 
     /* SCREENSHOTS */
 
     .gallery-background {
+
       background:
+
         linear-gradient(
           180deg,
           transparent,
-          rgba(244, 231, 225, 0.7),
+          rgba(
+            244,
+            231,
+            225,
+            0.7
+          ),
           transparent
         );
+
     }
+
 
     .screenshots {
-      display: grid;
 
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      display:
+        grid;
 
-      gap: 22px;
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0, 1fr)
+        );
 
-      align-items: start;
+      gap:
+        22px;
+
+      align-items:
+        start;
+
     }
+
 
     .screenshot {
-      min-width: 0;
 
-      text-align: center;
+      min-width:
+        0;
+
+      text-align:
+        center;
+
     }
+
 
     .screenshot img {
-      width: 100%;
-      max-width: 245px;
 
-      display: block;
+      width:
+        100%;
 
-      margin: 0 auto;
+      max-width:
+        245px;
 
-      border-radius: 36px;
+      display:
+        block;
+
+      margin:
+        0 auto;
+
+      border-radius:
+        36px;
 
       box-shadow:
-        0 18px 24px rgba(70, 55, 60, 0.14);
+        0 18px 24px
+        rgba(
+          70,
+          55,
+          60,
+          0.14
+        );
 
-      transition: 0.3s ease;
+      transition:
+        0.3s ease;
+
     }
+
 
     .screenshot img:hover {
-      transform: translateY(-7px);
+
+      transform:
+        translateY(-7px);
+
     }
+
 
     .screenshot p {
-      margin-top: 12px;
 
-      font-size: 0.93rem;
+      margin-top:
+        12px;
 
-      font-weight: 700;
+      font-size:
+        0.93rem;
 
-      color: var(--muted);
+      font-weight:
+        700;
+
+      color:
+        var(--muted);
+
     }
+
 
 
     /* ABOUT */
 
     .about {
-      padding: 50px;
 
-      display: grid;
+      padding:
+        50px;
 
-      grid-template-columns: 130px minmax(0, 1fr);
+      display:
+        grid;
 
-      gap: 35px;
+      grid-template-columns:
+        130px
+        minmax(0, 1fr);
 
-      align-items: center;
+      gap:
+        35px;
 
-      background: white;
+      align-items:
+        center;
 
-      border-radius: 32px;
+      background:
+        white;
 
-      box-shadow: var(--shadow);
+      border-radius:
+        32px;
+
+      box-shadow:
+        var(--shadow);
+
     }
+
 
     .about img {
-      width: 130px;
 
-      border-radius: 30px;
+      width:
+        130px;
+
+      border-radius:
+        30px;
+
     }
+
 
     .about h2 {
-      margin-top: 0;
 
-      color: var(--brown);
+      margin-top:
+        0;
+
+      color:
+        var(--brown);
+
     }
+
 
     .about p {
-      color: var(--muted);
 
-      line-height: 1.8;
+      color:
+        var(--muted);
+
+      line-height:
+        1.8;
+
     }
+
 
 
     /* STATUS */
 
     .status {
-      max-width: 780px;
 
-      margin: auto;
+      max-width:
+        780px;
 
-      padding: 55px 35px;
+      margin:
+        auto;
 
-      text-align: center;
+      padding:
+        55px 35px;
+
+      text-align:
+        center;
 
       background:
+
         linear-gradient(
           135deg,
           var(--pink-soft),
           var(--blue-soft)
         );
 
-      border-radius: 30px;
+      border-radius:
+        30px;
+
     }
+
 
     .status h2 {
-      margin: 0 0 12px;
 
-      color: var(--brown);
+      margin:
+        0 0 12px;
+
+      color:
+        var(--brown);
+
     }
+
 
     .status p {
-      margin-bottom: 0;
 
-      color: var(--muted);
+      margin-bottom:
+        0;
+
+      color:
+        var(--muted);
+
     }
+
 
 
     /* FOOTER */
 
     footer {
+
       width: 100%;
-      max-width: 1100px;
 
-      margin: 30px auto 0;
+      max-width:
+        1100px;
 
-      padding: 45px 28px;
+      margin:
+        30px auto 0;
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding:
+        45px 28px;
 
-      gap: 25px;
+      display:
+        flex;
 
-      border-top: 1px solid rgba(100, 70, 80, 0.12);
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+      gap:
+        25px;
+
+      border-top:
+        1px solid
+        rgba(
+          100,
+          70,
+          80,
+          0.12
+        );
+
     }
+
 
     .footer-left {
-      display: flex;
-      align-items: center;
 
-      gap: 14px;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        14px;
+
     }
+
 
     .footer-left img {
-      width: 54px;
-      height: 54px;
 
-      border-radius: 16px;
+      width:
+        54px;
+
+      height:
+        54px;
+
+      border-radius:
+        16px;
+
     }
+
 
     .footer-left strong {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
+
 
     .footer-left span {
-      display: block;
 
-      color: var(--muted);
+      display:
+        block;
 
-      font-size: 0.85rem;
+      color:
+        var(--muted);
+
+      font-size:
+        0.85rem;
+
     }
+
 
     .footer-links {
-      display: flex;
 
-      gap: 22px;
+      display:
+        flex;
 
-      flex-wrap: wrap;
+      gap:
+        22px;
 
-      justify-content: flex-end;
+      flex-wrap:
+        wrap;
 
-      font-size: 0.9rem;
+      justify-content:
+        flex-end;
+
+      font-size:
+        0.9rem;
+
     }
+
 
     .footer-links a {
-      color: var(--muted);
 
-      text-decoration: none;
+      color:
+        var(--muted);
+
+      text-decoration:
+        none;
+
     }
+
 
     .footer-links a:hover {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
+
 
 
     /* TABLET */
 
-    @media (max-width: 850px) {
+    @media
+    (max-width: 850px) {
 
       nav {
-        padding-left: 22px;
-        padding-right: 22px;
+
+        padding-left:
+          22px;
+
+        padding-right:
+          22px;
+
       }
+
 
       .hero {
-        grid-template-columns: 1fr;
 
-        gap: 50px;
+        grid-template-columns:
+          1fr;
 
-        text-align: center;
+        gap:
+          50px;
+
+        text-align:
+          center;
+
       }
+
 
       .hero-text {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
+
 
       .hero-text > p {
-        margin-left: auto;
-        margin-right: auto;
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+
       }
+
 
       .hero-buttons {
-        justify-content: center;
+
+        justify-content:
+          center;
+
       }
+
 
       .hero-phone::before {
-        top: 70px;
+
+        top:
+          70px;
+
       }
+
 
       .features {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
+
+
+      .demo-card {
+
+        grid-template-columns:
+          1fr;
+
+        text-align:
+          center;
+
+      }
+
+
+      .demo-content {
+
+        margin:
+          auto;
+
+      }
+
+
+      .demo-card p {
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+
+      }
+
+
+      .demo-play {
+
+        margin:
+          auto;
+
+      }
+
 
       .screenshots {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
 
-        gap: 22px;
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+        gap:
+          22px;
+
       }
+
 
       .about {
-        grid-template-columns: 1fr;
 
-        text-align: center;
+        grid-template-columns:
+          1fr;
+
+        text-align:
+          center;
+
       }
 
+
       .about img {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
 
     }
+
 
 
     /* CELULARES */
 
-    @media (max-width: 600px) {
+    @media
+    (max-width: 600px) {
 
       nav {
-        padding: 16px 18px;
 
-        align-items: flex-start;
+        padding:
+          16px 18px;
+
+        align-items:
+          flex-start;
+
       }
+
 
       .nav-logo span {
-        display: none;
+
+        display:
+          none;
+
       }
+
 
       .nav-links {
-        gap: 12px;
 
-        font-size: 0.9rem;
+        gap:
+          10px;
+
       }
+
 
       .nav-links a {
-        font-size: 0.86rem;
+
+        font-size:
+          0.82rem;
+
       }
 
+
+      .nav-demo {
+
+        padding:
+          8px 11px;
+
+      }
+
+
       .hero {
-        margin-top: 0;
+
+        margin-top:
+          0;
 
         padding:
           35px 18px
           60px;
+
       }
+
 
       .main-logo {
-        width: 230px;
-        max-width: 85%;
+
+        width:
+          230px;
+
+        max-width:
+          85%;
+
       }
+
 
       h1 {
-        font-size: clamp(2.3rem, 12vw, 3.5rem);
+
+        font-size:
+          clamp(
+            2.3rem,
+            12vw,
+            3.5rem
+          );
+
       }
+
 
       .hero-text > p {
-        font-size: 1.04rem;
 
-        line-height: 1.7;
+        font-size:
+          1.04rem;
+
+        line-height:
+          1.7;
+
       }
+
 
       .hero-buttons {
-        width: 100%;
 
-        justify-content: center;
+        width:
+          100%;
+
+        justify-content:
+          center;
+
       }
+
 
       .hero-phone img {
-        width: min(300px, 88vw);
 
-        border-radius: 32px;
+        width:
+          min(
+            300px,
+            88vw
+          );
+
+        border-radius:
+          32px;
+
       }
+
 
       .hero-phone::before {
-        width: min(330px, 94vw);
 
-        top: 60px;
+        width:
+          min(
+            330px,
+            94vw
+          );
+
+        top:
+          60px;
+
       }
+
 
       .section {
+
         padding:
           70px 18px;
+
       }
+
 
       .section-heading {
-        margin-bottom: 40px;
+
+        margin-bottom:
+          40px;
+
       }
+
 
       .features {
-        gap: 16px;
+
+        gap:
+          16px;
+
       }
+
 
       .feature {
-        padding: 26px 24px;
+
+        padding:
+          26px 24px;
+
       }
+
+
+      .demo-section {
+
+        padding:
+          0 18px
+          70px;
+
+      }
+
+
+      .demo-card {
+
+        padding:
+          38px 24px;
+
+        border-radius:
+          28px;
+
+      }
+
+
+      .demo-card::after {
+
+        font-size:
+          9rem;
+
+      }
+
+
+      .demo-play {
+
+        width:
+          100%;
+
+      }
+
 
       .screenshots {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
 
-        gap: 12px;
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+        gap:
+          12px;
+
       }
+
 
       .screenshot img {
-        border-radius: 28px;
+
+        border-radius:
+          28px;
+
       }
+
 
       .screenshot p {
-        font-size: 0.8rem;
+
+        font-size:
+          0.8rem;
+
       }
+
 
       .about {
-        padding: 32px 24px;
+
+        padding:
+          32px 24px;
+
       }
+
 
       .status {
-        padding: 40px 24px;
+
+        padding:
+          40px 24px;
+
       }
+
 
       footer {
-        padding-left: 18px;
-        padding-right: 18px;
 
-        flex-direction: column;
+        padding-left:
+          18px;
 
-        text-align: center;
+        padding-right:
+          18px;
+
+        flex-direction:
+          column;
+
+        text-align:
+          center;
+
       }
 
+
       .footer-links {
-        justify-content: center;
+
+        justify-content:
+          center;
+
       }
 
     }
 
 
+
     /* CELULARES PEQUEÑOS */
 
-    @media (max-width: 380px) {
+    @media
+    (max-width: 380px) {
 
       nav {
-        gap: 10px;
+
+        gap:
+          8px;
+
       }
+
 
       .nav-logo img {
-        width: 44px;
-        height: 44px;
+
+        width:
+          42px;
+
+        height:
+          42px;
+
       }
+
 
       .nav-links {
-        gap: 8px;
+
+        gap:
+          6px;
+
       }
+
 
       .nav-links a {
-        font-size: 0.78rem;
+
+        font-size:
+          0.72rem;
+
       }
+
+
+      .nav-demo {
+
+        padding:
+          7px 9px;
+
+      }
+
 
       .hero {
-        padding-left: 14px;
-        padding-right: 14px;
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
       }
+
 
       .main-logo {
-        width: 210px;
+
+        width:
+          210px;
+
       }
+
 
       .eyebrow {
-        font-size: 0.8rem;
 
-        padding: 7px 12px;
+        font-size:
+          0.8rem;
+
+        padding:
+          7px 12px;
+
       }
+
 
       h1 {
-        font-size: 2.35rem;
+
+        font-size:
+          2.35rem;
+
       }
+
 
       .hero-text > p {
-        font-size: 1rem;
+
+        font-size:
+          1rem;
+
       }
+
 
       .hero-buttons {
-        flex-direction: column;
 
-        align-items: stretch;
+        flex-direction:
+          column;
+
+        align-items:
+          stretch;
+
       }
+
 
       .button {
-        width: 100%;
 
-        text-align: center;
+        width:
+          100%;
+
+        text-align:
+          center;
+
       }
+
 
       .hero-phone img {
-        width: 92vw;
 
-        border-radius: 28px;
+        width:
+          92vw;
+
+        border-radius:
+          28px;
+
       }
+
 
       .section {
-        padding-left: 14px;
-        padding-right: 14px;
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
       }
+
+
+      .demo-section {
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
+      }
+
+
+      .demo-card {
+
+        padding:
+          34px 18px;
+
+      }
+
 
       .screenshots {
-        grid-template-columns: 1fr;
 
-        gap: 28px;
+        grid-template-columns:
+          1fr;
+
+        gap:
+          28px;
+
       }
+
 
       .screenshot img {
-        width: min(260px, 88vw);
 
-        border-radius: 30px;
+        width:
+          min(
+            260px,
+            88vw
+          );
+
+        border-radius:
+          30px;
+
       }
+
 
       .screenshot p {
-        font-size: 0.9rem;
+
+        font-size:
+          0.9rem;
+
       }
+
 
       .about {
-        padding: 28px 20px;
+
+        padding:
+          28px 20px;
+
       }
+
 
       .about img {
-        width: 110px;
+
+        width:
+          110px;
+
       }
+
 
       .status {
-        padding: 34px 20px;
+
+        padding:
+          34px 20px;
+
       }
 
-      .footer-links {
-        flex-direction: column;
 
-        gap: 10px;
+      .footer-links {
+
+        flex-direction:
+          column;
+
+        gap:
+          10px;
+
       }
 
     }
 
   </style>
+
 </head>
+
 
 
 <body>
@@ -911,29 +2021,53 @@
 
 <nav>
 
-  <a href="#" class="nav-logo">
+
+  <a
+    href="#"
+    class="nav-logo"
+  >
 
     <img
       src="assets/hanori_logoapp.png"
       alt="Hanori"
     >
 
-    <span>Hanori</span>
+    <span>
+      Hanori
+    </span>
 
   </a>
 
 
+
   <div class="nav-links">
 
-    <a href="#sobre">Sobre Hanori</a>
 
-    <a href="#capturas">La app</a>
+    <a href="#sobre">
+      Sobre Hanori
+    </a>
+
+
+    <a href="#capturas">
+      La app
+    </a>
+
+
+    <a
+      href="demo.html"
+      class="nav-demo"
+    >
+      Probar demo
+    </a>
+
 
     <a href="privacy.html">
       Privacidad
     </a>
 
+
   </div>
+
 
 </nav>
 
@@ -941,7 +2075,9 @@
 
 <header class="hero">
 
+
   <div class="hero-text">
+
 
     <img
       src="assets/hanori_logo.png"
@@ -949,40 +2085,58 @@
       class="main-logo"
     >
 
+
     <div class="eyebrow">
       Hangul · Hanja · práctica
     </div>
+
 
     <h1>
       Aprende coreano jugando.
     </h1>
 
+
     <p>
-      Hanori transforma la práctica de vocabulario coreano
-      en una experiencia visual e interactiva.
-      Practica Hangul, descubre palabras sino-coreanas
-      y refuerza tu vocabulario a tu propio ritmo.
+
+      Hanori transforma la práctica
+      de vocabulario coreano en una
+      experiencia visual e interactiva.
+
+      Practica Hangul, descubre palabras
+      sino-coreanas y refuerza tu
+      vocabulario a tu propio ritmo.
+
     </p>
+
 
 
     <div class="hero-buttons">
 
+
+      <a
+        href="demo.html"
+        class="
+          button
+          button-primary
+        "
+      >
+        ▶ Probar Hanori
+      </a>
+
+
       <a
         href="#capturas"
-        class="button button-primary"
+        class="
+          button
+          button-secondary
+        "
       >
-        Conoce Hanori
+        Conocer la app
       </a>
 
-
-      <a
-        href="privacy.html"
-        class="button button-secondary"
-      >
-        Política de privacidad
-      </a>
 
     </div>
+
 
   </div>
 
@@ -990,12 +2144,15 @@
 
   <div class="hero-phone">
 
+
     <img
       src="assets/home.png"
       alt="Pantalla principal de Hanori"
     >
 
+
   </div>
+
 
 </header>
 
@@ -1006,21 +2163,30 @@
   id="sobre"
 >
 
+
   <div class="section-heading">
 
-    <span>APRENDE A TU MANERA</span>
+
+    <span>
+      APRENDE A TU MANERA
+    </span>
+
 
     <h2>
       Una forma diferente de practicar
       vocabulario coreano
     </h2>
 
+
     <p>
+
       Hanori combina aprendizaje,
       práctica y juego para ayudarte
       a recordar palabras de una forma
       más dinámica.
+
     </p>
+
 
   </div>
 
@@ -1028,63 +2194,139 @@
 
   <div class="features">
 
+
     <article class="feature">
+
 
       <div class="feature-icon">
         한
       </div>
 
+
       <h3>
         Rosco Hangul
       </h3>
 
+
       <p>
+
         Practica vocabulario a partir
         de la consonante inicial de
         cada palabra.
+
       </p>
+
 
     </article>
 
 
+
     <article class="feature">
+
 
       <div class="feature-icon">
         家
       </div>
 
+
       <h3>
         Rosco Hanja
       </h3>
 
+
       <p>
+
         Descubre familias de palabras
         que comparten un mismo carácter
         Hanja y comprende mejor su origen.
+
       </p>
+
 
     </article>
 
 
+
     <article class="feature">
+
 
       <div class="feature-icon">
         ✦
       </div>
 
+
       <h3>
         Práctica personalizada
       </h3>
 
+
       <p>
+
         Hanori identifica qué palabras
         necesitas reforzar para que puedas
         concentrarte en ellas.
+
       </p>
+
 
     </article>
 
+
   </div>
+
+
+</section>
+
+
+
+<!-- DEMO -->
+
+<section class="demo-section">
+
+
+  <div class="demo-card">
+
+
+    <div class="demo-content">
+
+
+      <span class="demo-label">
+        PRUÉBALO EN EL NAVEGADOR
+      </span>
+
+
+      <h2>
+        Juega una partida de Hanori
+      </h2>
+
+
+      <p>
+
+        Prueba una versión del Rosco Hangul
+        directamente desde la web.
+
+        Responde las pistas en coreano,
+        pasa las palabras que no recuerdes
+        y vuelve a intentarlas con una
+        pequeña ayuda.
+
+      </p>
+
+
+    </div>
+
+
+
+    <a
+      href="demo.html"
+      class="demo-play"
+    >
+      ▶ Iniciar demo
+    </a>
+
+
+  </div>
+
 
 </section>
 
@@ -1092,24 +2334,34 @@
 
 <div class="gallery-background">
 
+
 <section
   class="section"
   id="capturas"
 >
 
+
   <div class="section-heading">
 
-    <span>HANORI POR DENTRO</span>
+
+    <span>
+      HANORI POR DENTRO
+    </span>
+
 
     <h2>
       Aprende, juega y observa
       tu progreso
     </h2>
 
+
     <p>
+
       Diferentes formas de practicar
       según lo que quieras aprender.
+
     </p>
+
 
   </div>
 
@@ -1117,56 +2369,83 @@
 
   <div class="screenshots">
 
+
     <div class="screenshot">
+
 
       <img
         src="assets/home.png"
         alt="Menú principal de Hanori"
       >
 
-      <p>Menú principal</p>
+
+      <p>
+        Menú principal
+      </p>
+
 
     </div>
 
 
+
     <div class="screenshot">
+
 
       <img
         src="assets/play.png"
         alt="Modos de juego de Hanori"
       >
 
-      <p>Hangul y Hanja</p>
+
+      <p>
+        Hangul y Hanja
+      </p>
+
 
     </div>
 
 
+
     <div class="screenshot">
+
 
       <img
         src="assets/rosco.png"
         alt="Rosco de vocabulario coreano"
       >
 
-      <p>Practica jugando</p>
+
+      <p>
+        Practica jugando
+      </p>
+
 
     </div>
 
 
+
     <div class="screenshot">
+
 
       <img
         src="assets/practice.png"
         alt="Práctica personalizada"
       >
 
-      <p>Refuerza tu vocabulario</p>
+
+      <p>
+        Refuerza tu vocabulario
+      </p>
+
 
     </div>
 
+
   </div>
 
+
 </section>
+
 
 </div>
 
@@ -1174,7 +2453,9 @@
 
 <section class="section">
 
+
   <div class="about">
+
 
     <img
       src="assets/hanori_logoapp.png"
@@ -1182,29 +2463,40 @@
     >
 
 
+
     <div>
+
 
       <h2>
         Sobre Hanori
       </h2>
 
+
       <p>
+
         Hanori nació como una herramienta
         para hacer más entretenida la práctica
         del vocabulario coreano.
+
       </p>
 
+
       <p>
+
         La aplicación combina diseño,
         aprendizaje y mecánicas de juego
         en una experiencia creada
         especialmente para estudiantes
         de coreano.
+
       </p>
+
 
     </div>
 
+
   </div>
+
 
 </section>
 
@@ -1212,19 +2504,26 @@
 
 <section class="section">
 
+
   <div class="status">
+
 
     <h2>
       Hanori · Versión 1.0
     </h2>
 
+
     <p>
+
       Actualmente preparándose para
       su publicación en Google Play.
       🌸
+
     </p>
 
+
   </div>
+
 
 </section>
 
@@ -1232,24 +2531,31 @@
 
 <footer>
 
+
   <div class="footer-left">
+
 
     <img
       src="assets/hanori_logoapp.png"
       alt="Hanori"
     >
 
+
     <div>
+
 
       <strong>
         Hanori
       </strong>
 
+
       <span>
         Aprende coreano jugando
       </span>
 
+
     </div>
+
 
   </div>
 
@@ -1257,18 +2563,28 @@
 
   <div class="footer-links">
 
+
+    <a href="demo.html">
+      Probar Hanori
+    </a>
+
+
     <a href="privacy.html">
       Política de privacidad
     </a>
+
 
     <a href="mailto:hanori@outlook.com.ar">
       Contacto
     </a>
 
+
   </div>
+
 
 </footer>
 
 
 </body>
+
 </html>
