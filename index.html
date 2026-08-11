@@ -17,6 +17,7 @@
     content="Hanori es una aplicación para aprender y practicar vocabulario coreano jugando."
   >
 
+
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com"
@@ -33,9 +34,11 @@
     rel="stylesheet"
   >
 
+
   <style>
 
     :root {
+
       --cream: #fbf4ed;
       --cream-dark: #eee2d8;
 
@@ -56,6 +59,7 @@
       --shadow:
         0 18px 50px
         rgba(80, 60, 65, 0.10);
+
     }
 
 
@@ -70,26 +74,32 @@
 
 
     body {
+
       margin: 0;
 
       font-family:
         "Nunito",
         sans-serif;
 
-      color: var(--text);
+      color:
+        var(--text);
 
       background:
+
         radial-gradient(
           circle at top left,
           rgba(214, 164, 166, 0.22),
           transparent 32%
         ),
+
         radial-gradient(
           circle at bottom right,
           rgba(158, 186, 203, 0.25),
           transparent 35%
         ),
+
         #fbf8f5;
+
     }
 
 
@@ -110,6 +120,7 @@
     ========================= */
 
     nav {
+
       width: 100%;
       max-width: 1150px;
 
@@ -121,86 +132,131 @@
 
       display: flex;
 
-      justify-content: space-between;
-      align-items: center;
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
 
       gap: 20px;
+
     }
 
 
     .nav-logo {
+
       display: flex;
 
-      align-items: center;
+      align-items:
+        center;
 
       gap: 12px;
 
       font-weight: 800;
 
-      color: var(--brown);
+      color:
+        var(--brown);
 
-      text-decoration: none;
+      text-decoration:
+        none;
 
-      flex-shrink: 0;
+      flex-shrink:
+        0;
+
     }
 
 
     .nav-logo img {
+
       width: 48px;
       height: 48px;
 
-      object-fit: cover;
+      object-fit:
+        cover;
 
-      border-radius: 14px;
+      border-radius:
+        14px;
+
     }
 
 
     .nav-links {
+
       display: flex;
 
-      align-items: center;
+      align-items:
+        center;
 
       gap: 24px;
 
-      flex-wrap: wrap;
+      flex-wrap:
+        wrap;
 
-      justify-content: flex-end;
+      justify-content:
+        flex-end;
+
     }
 
 
     .nav-links a {
-      text-decoration: none;
 
-      color: var(--muted);
+      text-decoration:
+        none;
 
-      font-weight: 600;
+      color:
+        var(--muted);
 
-      font-size: 0.95rem;
+      font-weight:
+        600;
 
-      white-space: nowrap;
+      font-size:
+        0.95rem;
+
+      white-space:
+        nowrap;
+
+      transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+
     }
 
 
     .nav-links a:hover {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
 
 
     .nav-demo {
+
       padding:
         10px
         16px;
 
-      border-radius: 14px;
+      border-radius:
+        14px;
 
-      background: var(--brown-dark);
+      background:
+        var(--brown-dark);
 
-      color: white !important;
+      color:
+        white !important;
+
     }
 
 
     .nav-demo:hover {
-      opacity: .9;
+
+      transform:
+        translateY(-1px);
+
+      opacity:
+        .92;
+
     }
 
 
@@ -210,6 +266,7 @@
     ========================= */
 
     .hero {
+
       width: 100%;
       max-width: 1150px;
 
@@ -231,16 +288,20 @@
       gap: 70px;
 
       align-items: center;
+
     }
 
 
     .hero-text {
+
       width: 100%;
       max-width: 570px;
+
     }
 
 
     .main-logo {
+
       width: 250px;
       max-width: 78%;
 
@@ -250,34 +311,43 @@
         0
         auto
         2px;
+
     }
 
 
     .eyebrow {
+
       display: table;
 
       padding:
         8px
         14px;
 
-      background: var(--pink-soft);
+      background:
+        var(--pink-soft);
 
-      color: var(--brown);
+      color:
+        var(--brown);
 
-      border-radius: 100px;
+      border-radius:
+        100px;
 
-      font-size: 0.88rem;
+      font-size:
+        0.88rem;
 
-      font-weight: 700;
+      font-weight:
+        700;
 
       margin:
         0
         auto
         13px;
+
     }
 
 
     h1 {
+
       margin:
         0
         0
@@ -290,17 +360,23 @@
           4.2rem
         );
 
-      line-height: 1.05;
+      line-height:
+        1.05;
 
-      color: var(--brown);
+      color:
+        var(--brown);
 
-      letter-spacing: -1.5px;
+      letter-spacing:
+        -1.5px;
 
-      text-align: center;
+      text-align:
+        center;
+
     }
 
 
     .hero-text > p {
+
       max-width: 520px;
 
       margin:
@@ -308,63 +384,92 @@
         auto
         30px;
 
-      font-size: 1.14rem;
+      font-size:
+        1.14rem;
 
-      line-height: 1.8;
+      line-height:
+        1.8;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      text-align: left;
+      text-align:
+        left;
+
     }
 
 
     .hero-buttons {
+
       display: flex;
 
       gap: 14px;
 
-      flex-wrap: wrap;
+      flex-wrap:
+        wrap;
+
     }
 
 
     .button {
-      display: inline-block;
+
+      display:
+        inline-block;
 
       padding:
         14px
         22px;
 
-      border-radius: 16px;
+      border-radius:
+        16px;
 
-      text-decoration: none;
+      text-decoration:
+        none;
 
-      font-weight: 700;
+      font-weight:
+        700;
 
-      transition: 0.2s ease;
+      transition:
+        transform .2s ease;
+
     }
 
 
     .button-primary {
-      background: var(--brown-dark);
 
-      color: white;
+      background:
+        var(--brown-dark);
+
+      color:
+        white;
+
     }
 
 
     .button-primary:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
+
     }
 
 
     .button-secondary {
-      background: var(--cream-dark);
 
-      color: var(--brown);
+      background:
+        var(--cream-dark);
+
+      color:
+        var(--brown);
+
     }
 
 
     .button-secondary:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
+
     }
 
 
@@ -374,21 +479,31 @@
     ========================= */
 
     .hero-phone {
+
       display: flex;
 
-      justify-content: center;
-      align-items: center;
+      justify-content:
+        center;
 
-      position: relative;
+      align-items:
+        center;
 
-      min-width: 0;
+      position:
+        relative;
+
+      min-width:
+        0;
+
     }
 
 
     .hero-phone::before {
-      content: "";
 
-      position: absolute;
+      content:
+        "";
+
+      position:
+        absolute;
 
       width:
         min(
@@ -396,44 +511,58 @@
           90vw
         );
 
-      aspect-ratio: 1 / 1;
+      aspect-ratio:
+        1 / 1;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
       background:
+
         linear-gradient(
           135deg,
           var(--pink-soft),
           var(--blue-soft)
         );
 
-      z-index: -1;
+      z-index:
+        -1;
 
-      top: 90px;
+      top:
+        90px;
+
     }
 
 
     .hero-phone img {
+
       width:
         min(
           330px,
           85vw
         );
 
-      display: block;
+      display:
+        block;
 
-      border-radius: 36px;
+      border-radius:
+        36px;
 
       box-shadow:
         0 24px 32px
         rgba(65, 50, 55, 0.18);
 
-      transition: 0.3s ease;
+      transition:
+        transform .3s ease;
+
     }
 
 
     .hero-phone img:hover {
-      transform: translateY(-5px);
+
+      transform:
+        translateY(-5px);
+
     }
 
 
@@ -448,6 +577,7 @@
 
 
     .section {
+
       width: 100%;
       max-width: 1100px;
 
@@ -456,10 +586,12 @@
       padding:
         90px
         28px;
+
     }
 
 
     .section-heading {
+
       max-width: 680px;
 
       margin:
@@ -468,19 +600,26 @@
         55px;
 
       text-align: center;
+
     }
 
 
     .section-heading span {
-      color: var(--pink);
 
-      font-weight: 800;
+      color:
+        var(--pink);
 
-      letter-spacing: 0.5px;
+      font-weight:
+        800;
+
+      letter-spacing:
+        0.5px;
+
     }
 
 
     .section-heading h2 {
+
       margin:
         8px
         0
@@ -493,16 +632,22 @@
           2.8rem
         );
 
-      color: var(--brown);
+      color:
+        var(--brown);
+
     }
 
 
     .section-heading p {
+
       margin: 0;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      line-height: 1.7;
+      line-height:
+        1.7;
+
     }
 
 
@@ -512,6 +657,7 @@
     ========================= */
 
     .features {
+
       display: grid;
 
       grid-template-columns:
@@ -521,13 +667,17 @@
         );
 
       gap: 20px;
+
     }
 
 
     .feature {
-      padding: 30px;
 
-      border-radius: 26px;
+      padding:
+        30px;
+
+      border-radius:
+        26px;
 
       background:
         rgba(
@@ -537,7 +687,8 @@
           0.78
         );
 
-      box-shadow: var(--shadow);
+      box-shadow:
+        var(--shadow);
 
       border:
         1px solid
@@ -547,58 +698,82 @@
           180,
           0.25
         );
+
     }
 
 
     .feature-icon {
+
       width: 50px;
       height: 50px;
 
       display: flex;
 
-      align-items: center;
-      justify-content: center;
+      align-items:
+        center;
 
-      border-radius: 15px;
+      justify-content:
+        center;
 
-      background: var(--pink-soft);
+      border-radius:
+        15px;
 
-      font-size: 1.4rem;
+      background:
+        var(--pink-soft);
 
-      margin-bottom: 20px;
+      font-size:
+        1.4rem;
+
+      margin-bottom:
+        20px;
+
     }
 
 
     .feature:nth-child(2)
     .feature-icon {
-      background: var(--blue-soft);
+
+      background:
+        var(--blue-soft);
+
     }
 
 
     .feature:nth-child(3)
     .feature-icon {
-      background: var(--cream-dark);
+
+      background:
+        var(--cream-dark);
+
     }
 
 
     .feature h3 {
+
       margin:
         0
         0
         10px;
 
-      color: var(--brown);
+      color:
+        var(--brown);
 
-      font-size: 1.2rem;
+      font-size:
+        1.2rem;
+
     }
 
 
     .feature p {
+
       margin: 0;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      line-height: 1.7;
+      line-height:
+        1.7;
+
     }
 
 
@@ -608,116 +783,141 @@
     ========================= */
 
     .demo-section {
-      max-width: 960px;
 
-      margin: auto;
+      max-width:
+        960px;
+
+      margin:
+        auto;
 
       padding:
         15px
         28px
         90px;
+
     }
 
 
     .demo-card {
-      position: relative;
 
-      overflow: hidden;
+      position:
+        relative;
+
+      overflow:
+        hidden;
 
       padding:
         55px
         48px;
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
         1fr
         auto;
 
-      gap: 45px;
+      gap:
+        45px;
 
-      align-items: center;
+      align-items:
+        center;
 
-      border-radius: 34px;
+      border-radius:
+        34px;
 
       background:
+
         linear-gradient(
           135deg,
-          rgba(
-            243,
-            221,
-            221,
-            .95
-          ),
-          rgba(
-            231,
-            240,
-            246,
-            .95
-          )
+          rgba(243,221,221,.95),
+          rgba(231,240,246,.95)
         );
 
-      box-shadow: var(--shadow);
+      box-shadow:
+        var(--shadow);
+
     }
 
 
     .demo-card::after {
-      content: "한";
 
-      position: absolute;
+      content:
+        "한";
 
-      right: -18px;
-      bottom: -65px;
+      position:
+        absolute;
+
+      right:
+        -18px;
+
+      bottom:
+        -65px;
 
       color:
-        rgba(
-          255,
-          255,
-          255,
-          .38
-        );
+        rgba(255,255,255,.38);
 
-      font-size: 12rem;
+      font-size:
+        12rem;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      line-height: 1;
+      line-height:
+        1;
 
-      pointer-events: none;
+      pointer-events:
+        none;
+
     }
 
 
     .demo-content {
-      position: relative;
 
-      z-index: 1;
+      position:
+        relative;
 
-      max-width: 590px;
+      z-index:
+        1;
+
+      max-width:
+        590px;
+
     }
 
 
     .demo-label {
-      display: inline-block;
 
-      margin-bottom: 10px;
+      display:
+        inline-block;
 
-      color: var(--brown);
+      margin-bottom:
+        10px;
 
-      font-size: .82rem;
+      color:
+        var(--brown);
 
-      font-weight: 800;
+      font-size:
+        .82rem;
 
-      letter-spacing: .08em;
+      font-weight:
+        800;
+
+      letter-spacing:
+        .08em;
+
     }
 
 
     .demo-card h2 {
+
       margin:
         0
         0
         14px;
 
-      color: var(--brown);
+      color:
+        var(--brown);
 
       font-size:
         clamp(
@@ -726,61 +926,88 @@
           2.8rem
         );
 
-      line-height: 1.15;
+      line-height:
+        1.15;
+
     }
 
 
     .demo-card p {
+
       margin:
         0
         0
         25px;
 
-      max-width: 560px;
+      max-width:
+        560px;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      line-height: 1.75;
+      line-height:
+        1.75;
+
     }
 
 
     .demo-play {
-      position: relative;
 
-      z-index: 2;
+      position:
+        relative;
 
-      display: inline-flex;
+      z-index:
+        2;
 
-      align-items: center;
-      justify-content: center;
+      display:
+        inline-flex;
 
-      min-width: 180px;
-      min-height: 58px;
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-width:
+        180px;
+
+      min-height:
+        58px;
 
       padding:
         15px
         24px;
 
-      border-radius: 19px;
+      border-radius:
+        19px;
 
-      background: var(--brown-dark);
+      background:
+        var(--brown-dark);
 
-      color: white;
+      color:
+        white;
 
-      text-decoration: none;
+      text-decoration:
+        none;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
       box-shadow:
         0 12px 25px
-        rgba(48, 37, 40, .16);
+        rgba(48,37,40,.16);
 
-      transition: transform .2s ease;
+      transition:
+        transform .2s ease;
+
     }
 
 
     .demo-play:hover {
-      transform: translateY(-3px);
+
+      transform:
+        translateY(-3px);
+
     }
 
 
@@ -790,76 +1017,100 @@
     ========================= */
 
     .gallery-background {
+
       background:
+
         linear-gradient(
           180deg,
           transparent,
-          rgba(
-            244,
-            231,
-            225,
-            0.7
-          ),
+          rgba(244,231,225,.7),
           transparent
         );
+
     }
 
 
     .screenshots {
-      display: grid;
+
+      display:
+        grid;
 
       grid-template-columns:
         repeat(
           4,
-          minmax(0, 1fr)
+          minmax(0,1fr)
         );
 
-      gap: 22px;
+      gap:
+        22px;
 
-      align-items: start;
+      align-items:
+        start;
+
     }
 
 
     .screenshot {
-      min-width: 0;
 
-      text-align: center;
+      min-width:
+        0;
+
+      text-align:
+        center;
+
     }
 
 
     .screenshot img {
-      width: 100%;
-      max-width: 245px;
 
-      display: block;
+      width:
+        100%;
+
+      max-width:
+        245px;
+
+      display:
+        block;
 
       margin:
         0
         auto;
 
-      border-radius: 36px;
+      border-radius:
+        36px;
 
       box-shadow:
         0 18px 24px
-        rgba(70, 55, 60, 0.14);
+        rgba(70,55,60,.14);
 
-      transition: 0.3s ease;
+      transition:
+        transform .3s ease;
+
     }
 
 
     .screenshot img:hover {
-      transform: translateY(-7px);
+
+      transform:
+        translateY(-7px);
+
     }
 
 
     .screenshot p {
-      margin-top: 12px;
 
-      font-size: 0.93rem;
+      margin-top:
+        12px;
 
-      font-weight: 700;
+      font-size:
+        .93rem;
 
-      color: var(--muted);
+      font-weight:
+        700;
+
+      color:
+        var(--muted);
+
     }
 
 
@@ -869,44 +1120,65 @@
     ========================= */
 
     .about {
-      padding: 50px;
 
-      display: grid;
+      padding:
+        50px;
+
+      display:
+        grid;
 
       grid-template-columns:
         130px
-        minmax(0, 1fr);
+        minmax(0,1fr);
 
-      gap: 35px;
+      gap:
+        35px;
 
-      align-items: center;
+      align-items:
+        center;
 
-      background: white;
+      background:
+        white;
 
-      border-radius: 32px;
+      border-radius:
+        32px;
 
-      box-shadow: var(--shadow);
+      box-shadow:
+        var(--shadow);
+
     }
 
 
     .about img {
-      width: 130px;
 
-      border-radius: 30px;
+      width:
+        130px;
+
+      border-radius:
+        30px;
+
     }
 
 
     .about h2 {
-      margin-top: 0;
 
-      color: var(--brown);
+      margin-top:
+        0;
+
+      color:
+        var(--brown);
+
     }
 
 
     .about p {
-      color: var(--muted);
 
-      line-height: 1.8;
+      color:
+        var(--muted);
+
+      line-height:
+        1.8;
+
     }
 
 
@@ -916,41 +1188,55 @@
     ========================= */
 
     .status {
-      max-width: 780px;
 
-      margin: auto;
+      max-width:
+        780px;
+
+      margin:
+        auto;
 
       padding:
         55px
         35px;
 
-      text-align: center;
+      text-align:
+        center;
 
       background:
+
         linear-gradient(
           135deg,
           var(--pink-soft),
           var(--blue-soft)
         );
 
-      border-radius: 30px;
+      border-radius:
+        30px;
+
     }
 
 
     .status h2 {
+
       margin:
         0
         0
         12px;
 
-      color: var(--brown);
+      color:
+        var(--brown);
+
     }
 
 
     .status p {
-      margin-bottom: 0;
 
-      color: var(--muted);
+      margin-bottom:
+        0;
+
+      color:
+        var(--muted);
+
     }
 
 
@@ -960,8 +1246,12 @@
     ========================= */
 
     footer {
-      width: 100%;
-      max-width: 1100px;
+
+      width:
+        100%;
+
+      max-width:
+        1100px;
 
       margin:
         30px
@@ -972,77 +1262,111 @@
         45px
         28px;
 
-      display: flex;
+      display:
+        flex;
 
-      justify-content: space-between;
-      align-items: center;
+      justify-content:
+        space-between;
 
-      gap: 25px;
+      align-items:
+        center;
+
+      gap:
+        25px;
 
       border-top:
         1px solid
-        rgba(
-          100,
-          70,
-          80,
-          0.12
-        );
+        rgba(100,70,80,.12);
+
     }
 
 
     .footer-left {
-      display: flex;
 
-      align-items: center;
+      display:
+        flex;
 
-      gap: 14px;
+      align-items:
+        center;
+
+      gap:
+        14px;
+
     }
 
 
     .footer-left img {
-      width: 54px;
-      height: 54px;
 
-      border-radius: 16px;
+      width:
+        54px;
+
+      height:
+        54px;
+
+      border-radius:
+        16px;
+
     }
 
 
     .footer-left strong {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
 
 
     .footer-left span {
-      display: block;
 
-      color: var(--muted);
+      display:
+        block;
 
-      font-size: 0.85rem;
+      color:
+        var(--muted);
+
+      font-size:
+        .85rem;
+
     }
 
 
     .footer-links {
-      display: flex;
 
-      gap: 22px;
+      display:
+        flex;
 
-      flex-wrap: wrap;
+      gap:
+        22px;
 
-      justify-content: flex-end;
+      flex-wrap:
+        wrap;
 
-      font-size: 0.9rem;
+      justify-content:
+        flex-end;
+
+      font-size:
+        .9rem;
+
     }
 
 
     .footer-links a {
-      color: var(--muted);
 
-      text-decoration: none;
+      color:
+        var(--muted);
+
+      text-decoration:
+        none;
+
     }
 
 
     .footer-links a:hover {
-      color: var(--brown);
+
+      color:
+        var(--brown);
+
     }
 
 
@@ -1051,94 +1375,145 @@
        TABLET
     ========================= */
 
-    @media (max-width: 850px) {
+    @media
+    (max-width: 850px) {
 
       nav {
-        padding-left: 22px;
-        padding-right: 22px;
+
+        padding-left:
+          22px;
+
+        padding-right:
+          22px;
+
       }
 
 
       .hero {
-        grid-template-columns: 1fr;
 
-        gap: 45px;
+        grid-template-columns:
+          1fr;
 
-        text-align: center;
+        gap:
+          45px;
 
-        padding-top: 18px;
+        text-align:
+          center;
+
+        padding-top:
+          18px;
+
       }
 
 
       .hero-text {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
 
 
       .hero-text > p {
-        margin-left: auto;
-        margin-right: auto;
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+
       }
 
 
       .hero-buttons {
-        justify-content: center;
+
+        justify-content:
+          center;
+
       }
 
 
       .hero-phone::before {
-        top: 70px;
+
+        top:
+          70px;
+
       }
 
 
       .features {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
 
 
       .demo-card {
-        grid-template-columns: 1fr;
 
-        text-align: center;
+        grid-template-columns:
+          1fr;
+
+        text-align:
+          center;
+
       }
 
 
       .demo-content {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
 
 
       .demo-card p {
-        margin-left: auto;
-        margin-right: auto;
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+
       }
 
 
       .demo-play {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
 
 
       .screenshots {
+
         grid-template-columns:
           repeat(
             2,
-            minmax(0, 1fr)
+            minmax(0,1fr)
           );
 
-        gap: 22px;
       }
 
 
       .about {
-        grid-template-columns: 1fr;
 
-        text-align: center;
+        grid-template-columns:
+          1fr;
+
+        text-align:
+          center;
+
       }
 
 
       .about img {
-        margin: auto;
+
+        margin:
+          auto;
+
       }
 
     }
@@ -1146,67 +1521,214 @@
 
 
     /* =========================
-       CELULARES
+       CELULAR
     ========================= */
 
-    @media (max-width: 600px) {
+    @media
+    (max-width: 600px) {
+
+
+      /*
+       * El header pasa a dos niveles:
+       *
+       *        logo
+       *
+       * Sobre Hanori | La app
+       * Probar demo   | Privacidad
+       */
 
       nav {
+
         padding:
+          14px
           16px
           18px;
 
-        align-items: flex-start;
+        flex-direction:
+          column;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
+
+        gap:
+          12px;
+
+      }
+
+
+      .nav-logo {
+
+        justify-content:
+          center;
+
+      }
+
+
+      .nav-logo img {
+
+        width:
+          54px;
+
+        height:
+          54px;
+
+        border-radius:
+          16px;
+
       }
 
 
       .nav-logo span {
-        display: none;
+
+        display:
+          none;
+
       }
 
 
       .nav-links {
-        gap: 10px;
+
+        width:
+          100%;
+
+        max-width:
+          390px;
+
+        display:
+          grid;
+
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+
+        gap:
+          8px;
+
       }
 
 
       .nav-links a {
-        font-size: 0.82rem;
+
+        width:
+          100%;
+
+        min-height:
+          43px;
+
+        padding:
+          10px
+          8px;
+
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
+
+        text-align:
+          center;
+
+        white-space:
+          normal;
+
+        border-radius:
+          13px;
+
+        font-size:
+          .88rem;
+
+        line-height:
+          1.2;
+
+        background:
+          rgba(
+            255,
+            255,
+            255,
+            .46
+          );
+
+      }
+
+
+      .nav-links a:hover {
+
+        background:
+          rgba(
+            255,
+            255,
+            255,
+            .78
+          );
+
       }
 
 
       .nav-demo {
+
         padding:
-          8px
-          11px;
+          10px
+          8px;
+
+        background:
+          var(--brown-dark)
+          !important;
+
+        color:
+          white
+          !important;
+
       }
 
 
+
+      /* HERO */
+
       .hero {
-        margin-top: 0;
+
+        margin-top:
+          0;
 
         padding:
-          14px
+          18px
           18px
           60px;
+
       }
 
 
       .main-logo {
-        width: 220px;
 
-        max-width: 85%;
+        width:
+          220px;
 
-        margin-bottom: 2px;
+        max-width:
+          85%;
+
+        margin-bottom:
+          2px;
+
       }
 
 
       .eyebrow {
-        margin-bottom: 12px;
+
+        margin-bottom:
+          12px;
+
       }
 
 
       h1 {
+
         font-size:
           clamp(
             2.2rem,
@@ -1214,144 +1736,204 @@
             3.3rem
           );
 
-        text-align: center;
       }
 
 
       .hero-text > p {
-        font-size: 1.04rem;
 
-        line-height: 1.7;
+        font-size:
+          1.04rem;
+
+        line-height:
+          1.7;
+
       }
 
 
       .hero-buttons {
-        width: 100%;
 
-        justify-content: center;
+        width:
+          100%;
+
+        justify-content:
+          center;
+
       }
 
 
       .hero-phone img {
+
         width:
           min(
             300px,
             88vw
           );
 
-        border-radius: 32px;
+        border-radius:
+          32px;
+
       }
 
 
       .hero-phone::before {
+
         width:
           min(
             330px,
             94vw
           );
 
-        top: 60px;
+        top:
+          60px;
+
       }
 
 
+
+      /* SECCIONES */
+
       .section {
+
         padding:
           70px
           18px;
+
       }
 
 
       .section-heading {
-        margin-bottom: 40px;
+
+        margin-bottom:
+          40px;
+
       }
 
 
       .features {
-        gap: 16px;
+
+        gap:
+          16px;
+
       }
 
 
       .feature {
+
         padding:
           26px
           24px;
+
       }
 
 
       .demo-section {
+
         padding:
           0
           18px
           70px;
+
       }
 
 
       .demo-card {
+
         padding:
           38px
           24px;
 
-        border-radius: 28px;
+        border-radius:
+          28px;
+
       }
 
 
       .demo-card::after {
-        font-size: 9rem;
+
+        font-size:
+          9rem;
+
       }
 
 
       .demo-play {
-        width: 100%;
+
+        width:
+          100%;
+
       }
 
 
       .screenshots {
+
         grid-template-columns:
           repeat(
             2,
-            minmax(0, 1fr)
+            minmax(0,1fr)
           );
 
-        gap: 12px;
+        gap:
+          12px;
+
       }
 
 
       .screenshot img {
-        border-radius: 28px;
+
+        border-radius:
+          28px;
+
       }
 
 
       .screenshot p {
-        font-size: 0.8rem;
+
+        font-size:
+          .8rem;
+
       }
 
 
       .about {
+
         padding:
           32px
           24px;
+
       }
 
 
       .status {
+
         padding:
           40px
           24px;
+
       }
 
 
       footer {
-        padding-left: 18px;
-        padding-right: 18px;
 
-        flex-direction: column;
+        padding-left:
+          18px;
 
-        text-align: center;
+        padding-right:
+          18px;
+
+        flex-direction:
+          column;
+
+        text-align:
+          center;
+
       }
 
 
       .footer-links {
-        justify-content: center;
+
+        justify-content:
+          center;
+
       }
 
     }
@@ -1359,155 +1941,236 @@
 
 
     /* =========================
-       CELULARES PEQUEÑOS
+       CELULAR PEQUEÑO
     ========================= */
 
-    @media (max-width: 380px) {
+    @media
+    (max-width: 380px) {
+
 
       nav {
-        gap: 8px;
-      }
 
+        padding-left:
+          12px;
 
-      .nav-logo img {
-        width: 42px;
-        height: 42px;
+        padding-right:
+          12px;
+
       }
 
 
       .nav-links {
-        gap: 6px;
+
+        gap:
+          7px;
+
       }
 
 
       .nav-links a {
-        font-size: 0.72rem;
+
+        min-height:
+          41px;
+
+        padding:
+          9px
+          6px;
+
+        font-size:
+          .8rem;
+
       }
 
 
-      .nav-demo {
-        padding:
-          7px
-          9px;
+      .nav-logo img {
+
+        width:
+          50px;
+
+        height:
+          50px;
+
       }
 
 
       .hero {
-        padding-left: 14px;
-        padding-right: 14px;
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
       }
 
 
       .main-logo {
-        width: 200px;
+
+        width:
+          200px;
+
       }
 
 
       .eyebrow {
-        font-size: 0.8rem;
+
+        font-size:
+          .8rem;
 
         padding:
           7px
           12px;
+
       }
 
 
       h1 {
-        font-size: 2.2rem;
+
+        font-size:
+          2.2rem;
+
       }
 
 
       .hero-text > p {
-        font-size: 1rem;
+
+        font-size:
+          1rem;
+
       }
 
 
       .hero-buttons {
-        flex-direction: column;
 
-        align-items: stretch;
+        flex-direction:
+          column;
+
+        align-items:
+          stretch;
+
       }
 
 
       .button {
-        width: 100%;
 
-        text-align: center;
+        width:
+          100%;
+
+        text-align:
+          center;
+
       }
 
 
       .hero-phone img {
-        width: 92vw;
 
-        border-radius: 28px;
+        width:
+          92vw;
+
+        border-radius:
+          28px;
+
       }
 
 
       .section {
-        padding-left: 14px;
-        padding-right: 14px;
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
       }
 
 
       .demo-section {
-        padding-left: 14px;
-        padding-right: 14px;
+
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+
       }
 
 
       .demo-card {
+
         padding:
           34px
           18px;
+
       }
 
 
       .screenshots {
-        grid-template-columns: 1fr;
 
-        gap: 28px;
+        grid-template-columns:
+          1fr;
+
+        gap:
+          28px;
+
       }
 
 
       .screenshot img {
+
         width:
           min(
             260px,
             88vw
           );
 
-        border-radius: 30px;
+        border-radius:
+          30px;
+
       }
 
 
       .screenshot p {
-        font-size: 0.9rem;
+
+        font-size:
+          .9rem;
+
       }
 
 
       .about {
+
         padding:
           28px
           20px;
+
       }
 
 
       .about img {
-        width: 110px;
+
+        width:
+          110px;
+
       }
 
 
       .status {
+
         padding:
           34px
           20px;
+
       }
 
 
       .footer-links {
-        flex-direction: column;
 
-        gap: 10px;
+        flex-direction:
+          column;
+
+        gap:
+          10px;
+
       }
 
     }
@@ -1517,10 +2180,13 @@
 </head>
 
 
+
 <body>
 
 
+
 <nav>
+
 
   <a
     href="#"
@@ -1539,15 +2205,19 @@
   </a>
 
 
+
   <div class="nav-links">
+
 
     <a href="#sobre">
       Sobre Hanori
     </a>
 
+
     <a href="#capturas">
       La app
     </a>
+
 
     <a
       href="demo.html"
@@ -1556,11 +2226,14 @@
       Probar demo
     </a>
 
+
     <a href="privacy.html">
       Privacidad
     </a>
 
+
   </div>
+
 
 </nav>
 
@@ -1598,7 +2271,9 @@
     </p>
 
 
+
     <div class="hero-buttons">
+
 
       <a
         href="demo.html"
@@ -1607,12 +2282,14 @@
         ▶ Probar Hanori
       </a>
 
+
       <a
         href="#capturas"
         class="button button-secondary"
       >
         Conocer la app
       </a>
+
 
     </div>
 
@@ -1623,10 +2300,12 @@
 
   <div class="hero-phone">
 
+
     <img
       src="assets/home.png"
       alt="Pantalla principal de Hanori"
     >
+
 
   </div>
 
@@ -1643,14 +2322,17 @@
 
   <div class="section-heading">
 
+
     <span>
       APRENDE A TU MANERA
     </span>
+
 
     <h2>
       Una forma diferente de practicar
       vocabulario coreano
     </h2>
+
 
     <p>
       Hanori combina aprendizaje,
@@ -1658,6 +2340,7 @@
       a recordar palabras de una forma
       más dinámica.
     </p>
+
 
   </div>
 
@@ -1668,13 +2351,16 @@
 
     <article class="feature">
 
+
       <div class="feature-icon">
         한
       </div>
 
+
       <h3>
         Rosco Hangul
       </h3>
+
 
       <p>
         Practica vocabulario a partir
@@ -1682,19 +2368,23 @@
         cada palabra.
       </p>
 
+
     </article>
 
 
 
     <article class="feature">
 
+
       <div class="feature-icon">
         家
       </div>
 
+
       <h3>
         Rosco Hanja
       </h3>
+
 
       <p>
         Descubre familias de palabras
@@ -1702,25 +2392,30 @@
         Hanja y comprende mejor su origen.
       </p>
 
+
     </article>
 
 
 
     <article class="feature">
 
+
       <div class="feature-icon">
         ✦
       </div>
 
+
       <h3>
         Práctica personalizada
       </h3>
+
 
       <p>
         Hanori identifica qué palabras
         necesitas reforzar para que puedas
         concentrarte en ellas.
       </p>
+
 
     </article>
 
@@ -1740,13 +2435,16 @@
 
     <div class="demo-content">
 
+
       <span class="demo-label">
         PRUÉBALO EN EL NAVEGADOR
       </span>
 
+
       <h2>
         Juega una partida de Hanori
       </h2>
+
 
       <p>
         Prueba una versión del Rosco Hangul
@@ -1757,7 +2455,9 @@
         pequeña ayuda.
       </p>
 
+
     </div>
+
 
 
     <a
@@ -1786,19 +2486,23 @@
 
   <div class="section-heading">
 
+
     <span>
       HANORI POR DENTRO
     </span>
+
 
     <h2>
       Aprende, juega y observa
       tu progreso
     </h2>
 
+
     <p>
       Diferentes formas de practicar
       según lo que quieras aprender.
     </p>
+
 
   </div>
 
@@ -1809,44 +2513,53 @@
 
     <div class="screenshot">
 
+
       <img
         src="assets/home.png"
         alt="Menú principal de Hanori"
       >
 
+
       <p>
         Menú principal
       </p>
+
 
     </div>
 
 
 
     <div class="screenshot">
+
 
       <img
         src="assets/play.png"
         alt="Modos de juego de Hanori"
       >
 
+
       <p>
         Hangul y Hanja
       </p>
+
 
     </div>
 
 
 
     <div class="screenshot">
+
 
       <img
         src="assets/rosco.png"
         alt="Rosco de vocabulario coreano"
       >
 
+
       <p>
         Practica jugando
       </p>
+
 
     </div>
 
@@ -1854,14 +2567,17 @@
 
     <div class="screenshot">
 
+
       <img
         src="assets/practice.png"
         alt="Práctica personalizada"
       >
 
+
       <p>
         Refuerza tu vocabulario
       </p>
+
 
     </div>
 
@@ -1888,17 +2604,21 @@
     >
 
 
+
     <div>
+
 
       <h2>
         Sobre Hanori
       </h2>
+
 
       <p>
         Hanori nació como una herramienta
         para hacer más entretenida la práctica
         del vocabulario coreano.
       </p>
+
 
       <p>
         La aplicación combina diseño,
@@ -1907,6 +2627,7 @@
         especialmente para estudiantes
         de coreano.
       </p>
+
 
     </div>
 
@@ -1923,15 +2644,18 @@
 
   <div class="status">
 
+
     <h2>
       Hanori · Versión 1.0
     </h2>
+
 
     <p>
       Actualmente preparándose para
       su publicación en Google Play.
       🌸
     </p>
+
 
   </div>
 
@@ -1945,22 +2669,28 @@
 
   <div class="footer-left">
 
+
     <img
       src="assets/hanori_logoapp.png"
       alt="Hanori"
     >
 
+
     <div>
+
 
       <strong>
         Hanori
       </strong>
 
+
       <span>
         Aprende coreano jugando
       </span>
 
+
     </div>
+
 
   </div>
 
@@ -1968,17 +2698,21 @@
 
   <div class="footer-links">
 
+
     <a href="demo.html">
       Probar Hanori
     </a>
+
 
     <a href="privacy.html">
       Política de privacidad
     </a>
 
+
     <a href="mailto:hanori@outlook.com.ar">
       Contacto
     </a>
+
 
   </div>
 
