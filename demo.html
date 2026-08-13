@@ -1674,4 +1674,1414 @@ const loadingScreen =
 
 const loadingMessage =
   document.getElementById("loadingMessage");
-  
+
+const roscoSvg =
+  document.getElementById("roscoSvg");
+
+const timerElement =
+  document.getElementById("timer");
+
+const scoreElement =
+  document.getElementById("score");
+
+const initialLabel =
+  document.getElementById("initialLabel");
+
+const clueElement =
+  document.getElementById("clue");
+
+const exampleElement =
+  document.getElementById("example");
+
+const answerForm =
+  document.getElementById("answerForm");
+
+const answerInput =
+  document.getElementById("answerInput");
+
+const feedbackElement =
+  document.getElementById("feedback");
+
+const passButton =
+  document.getElementById("passButton");
+
+const checkButton =
+  document.getElementById("checkButton");
+
+const pauseButton =
+  document.getElementById("pauseButton");
+
+const exitButton =
+  document.getElementById("exitButton");
+
+const pauseModal =
+  document.getElementById("pauseModal");
+
+const continueButton =
+  document.getElementById("continueButton");
+
+const pauseCloseButton =
+  document.getElementById("pauseCloseButton");
+
+const pauseExitButton =
+  document.getElementById("pauseExitButton");
+
+const resultModal =
+  document.getElementById("resultModal");
+
+const restartButton =
+  document.getElementById("restartButton");
+
+const resultExitButton =
+  document.getElementById("resultExitButton");
+
+
+
+function parseCSV(text) {
+
+  const rows = [];
+
+  let row = [];
+  let field = "";
+  let insideQuotes = false;
+
+
+  for (
+    let i = 0;
+    i < text.length;
+    i++
+  ) {
+
+    const character =
+      text[i];
+
+
+    if (character === '"') {
+
+      if (
+        insideQuotes &&
+        text[i + 1] === '"'
+      ) {
+
+        field += '"';
+
+        i++;
+
+      }
+
+      else {
+
+        insideQuotes =
+          !insideQuotes;
+
+      }
+
+    }
+
+    else if (
+      character === "," &&
+      !insideQuotes
+    ) {
+
+      row.push(field);
+
+      field = "";
+
+    }
+
+    else if (
+      (
+        character === "\n" ||
+        character === "\r"
+      )
+      &&
+      !insideQuotes
+    ) {
+
+      if (
+        character === "\r" &&
+        text[i + 1] === "\n"
+      ) {
+        i++;
+      }
+
+
+      row.push(field);
+
+      field = "";
+
+
+      if (
+        row.some(
+          value =>
+            value.trim() !== ""
+        )
+      ) {
+
+        rows.push(row);
+
+      }
+
+
+      row = [];
+
+    }
+
+    else {
+
+      field += character;
+
+    }
+
+  }
+
+
+  if (
+    field.length > 0 ||
+    row.length > 0
+  ) {
+
+    row.push(field);
+
+
+    if (
+      row.some(
+        value =>
+          value.trim() !== ""
+      )
+    ) {
+
+      rows.push(row);
+
+    }
+
+  }
+
+
+  if (!rows.length) {
+    return [];
+  }
+
+
+  rows[0][0] =
+    rows[0][0]
+      .replace(
+        /^\uFEFF/,
+        ""
+      );
+
+
+  const headers =
+    rows[0].map(
+      header =>
+        header
+          .trim()
+          .toLowerCase()
+    );
+
+
+  return rows
+    .slice(1)
+    .map(
+      values => {
+
+        const object = {};
+
+
+        headers.forEach(
+          (header, index) => {
+
+            object[header] =
+              (
+                values[index] ??
+                ""
+              )
+              .trim();
+
+          }
+        );
+
+
+        return object;
+
+      }
+    );
+
+}
+
+
+
+async function loadWordBank() {
+
+  try {
+
+    const response =
+      await fetch(
+        "data/level1.csv",
+        {
+          cache: "no-store"
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "No se pudo cargar data/level1.csv"
+      );
+
+    }
+
+
+    const csvText =
+      await response.text();
+
+
+    const parsed =
+      parseCSV(csvText);
+
+
+    const validRows =
+      parsed.filter(
+        word =>
+          word.initial &&
+          word.answer &&
+          word.clue
+      );
+
+
+    wordBank =
+      validRows.filter(
+        word => {
+
+          if (!word.level) {
+            return true;
+          }
+
+          return (
+            String(word.level)
+            ===
+            "1"
+          );
+
+        }
+      );
+
+
+    if (!wordBank.length) {
+
+      throw new Error(
+        "No hay palabras de nivel 1."
+      );
+
+    }
+
+
+    loadingScreen
+      .classList
+      .add("hidden");
+
+
+    startGame();
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+
+    loadingMessage.textContent =
+      "No pude cargar el banco de palabras. Comprueba que exista data/level1.csv.";
+
+
+    loadingMessage
+      .classList
+      .add("loading-error");
+
+  }
+
+}
+
+
+
+function randomItem(array) {
+
+  return array[
+    Math.floor(
+      Math.random() *
+      array.length
+    )
+  ];
+
+}
+
+
+
+function formatTime(totalSeconds) {
+
+  const minutes =
+    Math.floor(
+      totalSeconds / 60
+    );
+
+
+  const remainingSeconds =
+    totalSeconds % 60;
+
+
+  return (
+    String(minutes)
+      .padStart(2, "0")
+    +
+    ":"
+    +
+    String(remainingSeconds)
+      .padStart(2, "0")
+  );
+
+}
+
+
+
+function calculatePoints(
+  timeUsed,
+  wasPassed
+) {
+
+  let basePoints;
+
+
+  if (timeUsed <= 5) {
+
+    basePoints = 10;
+
+  }
+
+  else if (timeUsed <= 10) {
+
+    basePoints = 8;
+
+  }
+
+  else if (timeUsed <= 20) {
+
+    basePoints = 6;
+
+  }
+
+  else {
+
+    basePoints = 4;
+
+  }
+
+
+  return wasPassed
+    ?
+    Math.max(
+      2,
+      Math.floor(
+        basePoints / 2
+      )
+    )
+    :
+    basePoints;
+
+}
+
+
+
+function createRound() {
+
+  const availableConsonants =
+    consonantOrder.filter(
+      initial =>
+        wordBank.some(
+          word =>
+            word.initial === initial
+        )
+    );
+
+
+  gameWords =
+    availableConsonants.map(
+      initial => {
+
+        const candidates =
+          wordBank.filter(
+            word =>
+              word.initial === initial
+          );
+
+
+        return randomItem(
+          candidates
+        );
+
+      }
+    );
+
+
+  statuses =
+    gameWords.map(
+      () => "pending"
+    );
+
+
+  passedBefore =
+    gameWords.map(
+      () => false
+    );
+
+
+  if (statuses.length) {
+
+    statuses[0] =
+      "current";
+
+  }
+
+}
+
+
+
+function drawRosco() {
+
+  roscoSvg.innerHTML =
+    "";
+
+
+  const total =
+    gameWords.length;
+
+
+  if (!total) {
+    return;
+  }
+
+
+  const centerX = 250;
+  const centerY = 250;
+
+  const radius = 196;
+
+
+  let circleRadius = 20;
+
+
+  if (total <= 8) {
+    circleRadius = 24;
+  }
+
+
+  if (total <= 5) {
+    circleRadius = 27;
+  }
+
+
+  const ring =
+    document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+
+
+  ring.setAttribute(
+    "cx",
+    centerX
+  );
+
+
+  ring.setAttribute(
+    "cy",
+    centerY
+  );
+
+
+  ring.setAttribute(
+    "r",
+    radius
+  );
+
+
+  ring.setAttribute(
+    "class",
+    "rosco-ring"
+  );
+
+
+  roscoSvg.appendChild(
+    ring
+  );
+
+
+  gameWords.forEach(
+    (word, index) => {
+
+      const angle =
+        -Math.PI / 2
+        +
+        (
+          index *
+          (
+            Math.PI * 2 /
+            total
+          )
+        );
+
+
+      const x =
+        centerX +
+        Math.cos(angle) *
+        radius;
+
+
+      const y =
+        centerY +
+        Math.sin(angle) *
+        radius;
+
+
+      const circle =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
+        );
+
+
+      circle.setAttribute(
+        "cx",
+        x
+      );
+
+
+      circle.setAttribute(
+        "cy",
+        y
+      );
+
+
+      circle.setAttribute(
+        "r",
+        circleRadius
+      );
+
+
+      circle.setAttribute(
+        "class",
+        "rosco-circle "
+        +
+        statuses[index]
+      );
+
+
+      const text =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "text"
+        );
+
+
+      text.setAttribute(
+        "x",
+        x
+      );
+
+
+      text.setAttribute(
+        "y",
+        y + 1
+      );
+
+
+      text.setAttribute(
+        "class",
+        "rosco-letter "
+        +
+        (
+          statuses[index] === "passed"
+            ?
+            "passed"
+            :
+            ""
+        )
+      );
+
+
+      text.textContent =
+        word.initial;
+
+
+      roscoSvg.appendChild(
+        circle
+      );
+
+
+      roscoSvg.appendChild(
+        text
+      );
+
+    }
+  );
+
+}
+
+
+
+function showCurrentWord() {
+
+  if (!gameWords.length) {
+    return;
+  }
+
+
+  answerLocked = false;
+
+
+  const currentWord =
+    gameWords[currentIndex];
+
+
+  initialLabel.textContent =
+    "Comienza con "
+    +
+    currentWord.initial;
+
+
+  clueElement.textContent =
+    currentWord.clue;
+
+
+  const shouldShowExample =
+    passedBefore[currentIndex]
+    &&
+    currentWord.example;
+
+
+  if (shouldShowExample) {
+
+    exampleElement.textContent =
+      "💡 "
+      +
+      currentWord.example;
+
+
+    exampleElement
+      .classList
+      .remove("hidden");
+
+  }
+
+  else {
+
+    exampleElement.textContent =
+      "Ejemplo";
+
+
+    exampleElement
+      .classList
+      .add("hidden");
+
+  }
+
+
+  feedbackElement.textContent =
+    "";
+
+
+  feedbackElement.className =
+    "feedback";
+
+
+  answerInput.value =
+    "";
+
+
+  answerInput.disabled =
+    false;
+
+
+  passButton.disabled =
+    false;
+
+
+  checkButton.disabled =
+    false;
+
+
+  drawRosco();
+
+}
+
+
+
+function goNext() {
+
+  let nextIndex = null;
+
+
+  for (
+    let offset = 1;
+    offset <= gameWords.length;
+    offset++
+  ) {
+
+    const candidate =
+      (
+        currentIndex +
+        offset
+      )
+      %
+      gameWords.length;
+
+
+    if (
+      statuses[candidate]
+      ===
+      "pending"
+    ) {
+
+      nextIndex =
+        candidate;
+
+      break;
+
+    }
+
+  }
+
+
+  if (nextIndex === null) {
+
+    for (
+      let offset = 1;
+      offset <= gameWords.length;
+      offset++
+    ) {
+
+      const candidate =
+        (
+          currentIndex +
+          offset
+        )
+        %
+        gameWords.length;
+
+
+      if (
+        statuses[candidate]
+        ===
+        "passed"
+      ) {
+
+        nextIndex =
+          candidate;
+
+        break;
+
+      }
+
+    }
+
+  }
+
+
+  if (nextIndex === null) {
+
+    finishGame();
+
+    return;
+
+  }
+
+
+  currentIndex =
+    nextIndex;
+
+
+  statuses[currentIndex] =
+    "current";
+
+
+  questionStartSeconds =
+    seconds;
+
+
+  showCurrentWord();
+
+}
+
+
+
+function checkAnswer() {
+
+  if (
+    paused ||
+    finished ||
+    answerLocked
+  ) {
+
+    return;
+
+  }
+
+
+  const currentWord =
+    gameWords[currentIndex];
+
+
+  const userAnswer =
+    answerInput
+      .value
+      .trim()
+      .normalize("NFC");
+
+
+  if (!userAnswer) {
+
+    answerInput.focus();
+
+    return;
+
+  }
+
+
+  const correctAnswer =
+    currentWord.answer
+      .trim()
+      .normalize("NFC");
+
+
+  answerLocked = true;
+
+  passButton.disabled = true;
+  checkButton.disabled = true;
+
+
+  const isCorrect =
+    userAnswer
+    ===
+    correctAnswer;
+
+
+  const wasPassed =
+    passedBefore[currentIndex];
+
+
+  if (isCorrect) {
+
+    const timeUsed =
+      seconds -
+      questionStartSeconds;
+
+
+    const earnedPoints =
+      calculatePoints(
+        timeUsed,
+        wasPassed
+      );
+
+
+    score += earnedPoints;
+
+
+    statuses[currentIndex] =
+      "correct";
+
+
+    feedbackElement.textContent =
+      "✓ ¡Correcto! +"
+      +
+      earnedPoints
+      +
+      " puntos";
+
+
+    feedbackElement.className =
+      "feedback correct";
+
+
+    scoreElement.textContent =
+      "⭐ "
+      +
+      score;
+
+
+    answerInput.disabled =
+      true;
+
+
+    drawRosco();
+
+
+    setTimeout(
+      goNext,
+      700
+    );
+
+  }
+
+  else {
+
+    statuses[currentIndex] =
+      "wrong";
+
+
+    feedbackElement.textContent =
+      "Respuesta: "
+      +
+      currentWord.answer;
+
+
+    feedbackElement.className =
+      "feedback wrong";
+
+
+    answerInput.disabled =
+      true;
+
+
+    drawRosco();
+
+
+    setTimeout(
+      goNext,
+      1200
+    );
+
+  }
+
+}
+
+
+
+function passWord() {
+
+  if (
+    paused ||
+    finished ||
+    answerLocked
+  ) {
+
+    return;
+
+  }
+
+
+  answerLocked = true;
+
+
+  passedBefore[currentIndex] =
+    true;
+
+
+  statuses[currentIndex] =
+    "passed";
+
+
+  drawRosco();
+
+
+  setTimeout(
+    goNext,
+    160
+  );
+
+}
+
+
+
+function startTimer() {
+
+  clearInterval(
+    timerInterval
+  );
+
+
+  timerInterval =
+    setInterval(
+      () => {
+
+        if (
+          !paused &&
+          !finished
+        ) {
+
+          seconds++;
+
+
+          timerElement.textContent =
+            "⏱ "
+            +
+            formatTime(seconds);
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+
+function pauseGame() {
+
+  if (finished) {
+    return;
+  }
+
+
+  paused = true;
+
+
+  pauseModal
+    .classList
+    .add("visible");
+
+}
+
+
+
+function continueGame() {
+
+  paused = false;
+
+
+  questionStartSeconds =
+    seconds;
+
+
+  pauseModal
+    .classList
+    .remove("visible");
+
+}
+
+
+
+function finishGame() {
+
+  finished = true;
+
+
+  clearInterval(
+    timerInterval
+  );
+
+
+  const correct =
+    statuses.filter(
+      status =>
+        status === "correct"
+    ).length;
+
+
+  const wrong =
+    statuses.filter(
+      status =>
+        status === "wrong"
+    ).length;
+
+
+  const passed =
+    passedBefore.filter(
+      value => value
+    ).length;
+
+
+  document
+    .getElementById(
+      "correctResult"
+    )
+    .textContent =
+      correct;
+
+
+  document
+    .getElementById(
+      "wrongResult"
+    )
+    .textContent =
+      wrong;
+
+
+  document
+    .getElementById(
+      "passedResult"
+    )
+    .textContent =
+      passed;
+
+
+  document
+    .getElementById(
+      "finalScore"
+    )
+    .textContent =
+      "⭐ "
+      +
+      score
+      +
+      " puntos · ⏱ "
+      +
+      formatTime(seconds);
+
+
+  resultModal
+    .classList
+    .add("visible");
+
+}
+
+
+
+function startGame() {
+
+  clearInterval(
+    timerInterval
+  );
+
+
+  currentIndex = 0;
+
+  score = 0;
+
+  seconds = 0;
+
+  questionStartSeconds = 0;
+
+  paused = false;
+
+  finished = false;
+
+  answerLocked = false;
+
+
+  timerElement.textContent =
+    "⏱ 00:00";
+
+
+  scoreElement.textContent =
+    "⭐ 0";
+
+
+  resultModal
+    .classList
+    .remove("visible");
+
+
+  pauseModal
+    .classList
+    .remove("visible");
+
+
+  createRound();
+
+  showCurrentWord();
+
+  startTimer();
+
+}
+
+
+
+function exitDemo() {
+
+  window.location.href =
+    "index.html";
+
+}
+
+
+
+let initialViewportHeight =
+  window.innerHeight;
+
+
+function updateKeyboardState() {
+
+  const currentHeight =
+    window.visualViewport
+      ?
+      window.visualViewport.height
+      :
+      window.innerHeight;
+
+
+  const lostHeight =
+    initialViewportHeight
+    -
+    currentHeight;
+
+
+  const keyboardLikelyOpen =
+    window.innerWidth <= 700
+    &&
+    lostHeight > 140;
+
+
+  document.body
+    .classList
+    .toggle(
+      "keyboard-open",
+      keyboardLikelyOpen
+    );
+
+}
+
+
+
+if (window.visualViewport) {
+
+  window.visualViewport
+    .addEventListener(
+      "resize",
+      updateKeyboardState
+    );
+
+
+  window.visualViewport
+    .addEventListener(
+      "scroll",
+      updateKeyboardState
+    );
+
+}
+
+
+
+answerInput
+  .addEventListener(
+    "focus",
+    () => {
+
+      setTimeout(
+        updateKeyboardState,
+        250
+      );
+
+    }
+  );
+
+
+answerInput
+  .addEventListener(
+    "blur",
+    () => {
+
+      setTimeout(
+        () => {
+
+          document.body
+            .classList
+            .remove(
+              "keyboard-open"
+            );
+
+        },
+        150
+      );
+
+    }
+  );
+
+
+
+answerForm
+  .addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+      checkAnswer();
+
+    }
+  );
+
+
+passButton
+  .addEventListener(
+    "click",
+    passWord
+  );
+
+
+pauseButton
+  .addEventListener(
+    "click",
+    pauseGame
+  );
+
+
+exitButton
+  .addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+continueButton
+  .addEventListener(
+    "click",
+    continueGame
+  );
+
+
+pauseCloseButton
+  .addEventListener(
+    "click",
+    continueGame
+  );
+
+
+pauseExitButton
+  .addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+resultExitButton
+  .addEventListener(
+    "click",
+    exitDemo
+  );
+
+
+restartButton
+  .addEventListener(
+    "click",
+    startGame
+  );
+
+
+document
+  .addEventListener(
+    "visibilitychange",
+    () => {
+
+      if (
+        document.hidden &&
+        !finished &&
+        !paused
+      ) {
+
+        pauseGame();
+
+      }
+
+    }
+  );
+
+
+loadWordBank();
+
+</script>
+
+
+</body>
+
+</html>
