@@ -3,6 +3,16 @@
 
 <head>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9PJM4JK36"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G9PJM4JK36');
+  </script>
+
   <meta charset="UTF-8">
 
   <meta
@@ -122,11 +132,6 @@
     }
 
 
-
-    /* ===============================
-       PÁGINA
-    =============================== */
-
     .demo-page {
 
       min-height: 100vh;
@@ -137,11 +142,6 @@
 
     }
 
-
-
-    /* ===============================
-       BARRA SUPERIOR
-    =============================== */
 
     .topbar {
 
@@ -229,19 +229,6 @@
 
       cursor: pointer;
 
-      transition:
-        transform .18s ease,
-        background .18s ease;
-
-    }
-
-
-    .icon-button:hover {
-
-      transform: translateY(-2px);
-
-      background: white;
-
     }
 
 
@@ -256,11 +243,6 @@
 
     }
 
-
-
-    /* ===============================
-       CONTENEDOR DEL JUEGO
-    =============================== */
 
     .game-shell {
 
@@ -281,16 +263,8 @@
 
       align-items: center;
 
-      transition:
-        padding .2s ease;
-
     }
 
-
-
-    /* ===============================
-       TIEMPO Y PUNTOS
-    =============================== */
 
     .game-header {
 
@@ -314,17 +288,6 @@
 
     }
 
-
-    .timer,
-    .score {
-      white-space: nowrap;
-    }
-
-
-
-    /* ===============================
-       ROSCO
-    =============================== */
 
     .rosco-area {
 
@@ -453,11 +416,6 @@
     }
 
 
-
-    /* ===============================
-       REY SEJONG
-    =============================== */
-
     .sejong-wrap {
 
       position: absolute;
@@ -496,21 +454,8 @@
 
       object-fit: contain;
 
-      filter:
-        drop-shadow(
-          0
-          8px
-          12px
-          rgba(65,50,55,.08)
-        );
-
     }
 
-
-
-    /* ===============================
-       TARJETA
-    =============================== */
 
     .question-card {
 
@@ -539,10 +484,6 @@
       box-shadow: var(--shadow);
 
       backdrop-filter: blur(8px);
-
-      transition:
-        padding .2s ease,
-        border-radius .2s ease;
 
     }
 
@@ -584,11 +525,6 @@
     }
 
 
-
-    /* ===============================
-       EJEMPLO
-    =============================== */
-
     .example-area {
 
       min-height: 40px;
@@ -600,9 +536,6 @@
       justify-content: center;
 
       align-items: center;
-
-      transition:
-        min-height .2s ease;
 
     }
 
@@ -624,11 +557,6 @@
       visibility: hidden;
     }
 
-
-
-    /* ===============================
-       RESPUESTA
-    =============================== */
 
     .answer-form {
 
@@ -669,11 +597,6 @@
 
       text-align: center;
 
-      transition:
-        border .2s ease,
-        box-shadow .2s ease,
-        padding .2s ease;
-
     }
 
 
@@ -688,16 +611,6 @@
     }
 
 
-    .answer-input:disabled {
-      opacity: .72;
-    }
-
-
-
-    /* ===============================
-       FEEDBACK
-    =============================== */
-
     .feedback {
 
       min-height: 23px;
@@ -707,9 +620,6 @@
       font-size: .94rem;
 
       font-weight: 800;
-
-      transition:
-        min-height .2s ease;
 
     }
 
@@ -723,11 +633,6 @@
       color: #a35f5f;
     }
 
-
-
-    /* ===============================
-       BOTONES
-    =============================== */
 
     .game-buttons {
 
@@ -762,21 +667,6 @@
 
       font-weight: 800;
 
-      transition:
-        transform .18s ease,
-        opacity .18s ease,
-        min-height .2s ease;
-
-    }
-
-
-    .game-button:hover {
-      transform: translateY(-2px);
-    }
-
-
-    .game-button:active {
-      transform: translateY(0);
     }
 
 
@@ -785,6 +675,1008 @@
       background: var(--cream-dark);
 
       color: var(--brown);
+
+    }
+
+
+    .check-button {
+
+      background: var(--brown-dark);
+
+      color: white;
+
+    }
+
+
+    .game-button:disabled {
+
+      cursor: default;
+
+      opacity: .5;
+
+    }
+
+
+    .demo-note {
+
+      margin:
+        12px
+        0
+        0;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: .76rem;
+
+    }
+
+
+    .loading-screen {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 200;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 30px;
+
+      text-align: center;
+
+      background: var(--background);
+
+    }
+
+
+    .loading-screen.hidden {
+      display: none;
+    }
+
+
+    .loading-logo {
+
+      width: 115px;
+
+      margin-bottom: 18px;
+
+      border-radius: 28px;
+
+    }
+
+
+    .loading-screen strong {
+
+      color: var(--brown);
+
+      font-size: 1.25rem;
+
+    }
+
+
+    .loading-screen p {
+
+      max-width: 420px;
+
+      color: var(--muted);
+
+      line-height: 1.6;
+
+    }
+
+
+    .loading-error {
+
+      color: #a35f5f !important;
+
+      font-weight: 700;
+
+    }
+
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      padding: 22px;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        rgba(44,37,40,.38);
+
+      backdrop-filter: blur(4px);
+
+    }
+
+
+    .modal.visible {
+      display: flex;
+    }
+
+
+    .modal-card {
+
+      position: relative;
+
+      width:
+        min(
+          420px,
+          100%
+        );
+
+      padding:
+        30px
+        25px;
+
+      background:
+        rgba(255,255,255,.98);
+
+      border-radius: 28px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(40,30,35,.25);
+
+      text-align: center;
+
+    }
+
+
+    .modal-close {
+
+      position: absolute;
+
+      top: 12px;
+      right: 12px;
+
+      width: 36px;
+      height: 36px;
+
+      padding: 4px;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background: transparent;
+
+      cursor: pointer;
+
+    }
+
+
+    .modal-close img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+    }
+
+
+    .modal-card h2 {
+
+      margin:
+        4px
+        0
+        10px;
+
+      color: var(--brown);
+
+      font-size: 1.65rem;
+
+    }
+
+
+    .modal-card p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.6;
+
+    }
+
+
+    .modal-buttons {
+
+      margin-top: 22px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+
+    }
+
+
+    .modal-button {
+
+      width: 100%;
+
+      min-height: 48px;
+
+      padding:
+        12px
+        17px;
+
+      border: 0;
+
+      border-radius: 16px;
+
+      cursor: pointer;
+
+      font-size: .96rem;
+
+      font-weight: 800;
+
+    }
+
+
+    .modal-primary {
+
+      background: var(--brown-dark);
+
+      color: white;
+
+    }
+
+
+    .modal-secondary {
+
+      background: var(--cream-dark);
+
+      color: var(--brown);
+
+    }
+
+
+    .result-stats {
+
+      margin-top: 22px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap: 8px;
+
+    }
+
+
+    .result-stat {
+
+      padding:
+        14px
+        6px;
+
+      background: var(--cream);
+
+      border-radius: 17px;
+
+    }
+
+
+    .result-number {
+
+      display: block;
+
+      color: var(--brown);
+
+      font-size: 1.6rem;
+
+      font-weight: 800;
+
+    }
+
+
+    .result-label {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: .73rem;
+
+    }
+
+
+    .final-score {
+
+      margin-top: 18px;
+
+      color: var(--brown);
+
+      font-size: 1.04rem;
+
+      font-weight: 800;
+
+    }
+
+
+
+    @media (max-width: 520px) {
+
+      .topbar {
+
+        padding:
+          10px
+          12px
+          0;
+
+      }
+
+
+      .brand span {
+        display: none;
+      }
+
+
+      .brand img {
+
+        width: 38px;
+        height: 38px;
+
+      }
+
+
+      .game-shell {
+
+        width: 100%;
+
+        padding:
+          2px
+          12px
+          22px;
+
+      }
+
+
+      .game-header {
+        font-size: .9rem;
+      }
+
+
+      .rosco-area {
+
+        width:
+          min(
+            370px,
+            92vw
+          );
+
+      }
+
+
+      .question-card {
+
+        width: 100%;
+
+        padding:
+          16px
+          14px
+          17px;
+
+        border-radius: 23px;
+
+      }
+
+
+      .clue {
+        font-size: 1.2rem;
+      }
+
+
+      .answer-input {
+
+        padding:
+          12px
+          11px;
+
+        font-size: 1rem;
+
+      }
+
+
+      .game-button {
+
+        min-height: 46px;
+
+        padding:
+          10px
+          7px;
+
+        font-size: .86rem;
+
+      }
+
+    }
+
+
+
+    /* TECLADO ABIERTO */
+
+    body.keyboard-open .topbar {
+      padding-top: 4px;
+    }
+
+
+    body.keyboard-open .brand img {
+
+      width: 32px;
+      height: 32px;
+
+    }
+
+
+    body.keyboard-open .icon-button {
+
+      width: 32px;
+      height: 32px;
+
+    }
+
+
+    body.keyboard-open .game-shell {
+
+      padding:
+        0
+        10px
+        8px;
+
+    }
+
+
+    body.keyboard-open .game-header {
+
+      font-size: .82rem;
+
+      margin-bottom: -3px;
+
+    }
+
+
+    body.keyboard-open .rosco-area {
+
+      width:
+        min(
+          250px,
+          64vw
+        );
+
+      margin:
+        -7px
+        auto
+        -7px;
+
+    }
+
+
+    body.keyboard-open .sejong-wrap {
+      width: 37%;
+    }
+
+
+    body.keyboard-open .question-card {
+
+      padding:
+        11px
+        12px
+        12px;
+
+      border-radius: 20px;
+
+    }
+
+
+    body.keyboard-open .initial-label {
+
+      font-size: .68rem;
+
+      margin-bottom: 1px;
+
+    }
+
+
+    body.keyboard-open .clue {
+      font-size: 1.05rem;
+    }
+
+
+    body.keyboard-open .example-area {
+
+      min-height: 22px;
+
+      margin-top: 1px;
+
+    }
+
+
+    body.keyboard-open .example {
+      font-size: .76rem;
+    }
+
+
+    body.keyboard-open .answer-form {
+
+      gap: 6px;
+
+      margin-top: 0;
+
+    }
+
+
+    body.keyboard-open .answer-input {
+
+      padding:
+        9px
+        10px;
+
+      font-size: .92rem;
+
+      border-radius: 14px;
+
+    }
+
+
+    body.keyboard-open .feedback {
+
+      min-height: 18px;
+
+      font-size: .8rem;
+
+    }
+
+
+    body.keyboard-open .game-button {
+
+      min-height: 40px;
+
+      padding:
+        8px
+        5px;
+
+      font-size: .8rem;
+
+      border-radius: 14px;
+
+    }
+
+
+    body.keyboard-open .demo-note {
+      display: none;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div
+  class="loading-screen"
+  id="loadingScreen"
+>
+
+  <img
+    src="assets/hanori_logoapp.png"
+    alt="Hanori"
+    class="loading-logo"
+  >
+
+  <strong>
+    Preparando el rosco...
+  </strong>
+
+  <p id="loadingMessage">
+    Cargando vocabulario de nivel 1.
+  </p>
+
+</div>
+
+
+
+<div class="demo-page">
+
+
+  <header class="topbar">
+
+    <a
+      href="index.html"
+      class="brand"
+    >
+
+      <img
+        src="assets/hanori_logoapp.png"
+        alt="Hanori"
+      >
+
+      <span>
+        Hanori
+      </span>
+
+    </a>
+
+
+    <div class="top-actions">
+
+      <button
+        type="button"
+        class="icon-button"
+        id="pauseButton"
+      >
+
+        <img
+          src="assets/icon_pause.png"
+          alt="Pausar"
+        >
+
+      </button>
+
+
+      <button
+        type="button"
+        class="icon-button"
+        id="exitButton"
+      >
+
+        <img
+          src="assets/icon_exit.png"
+          alt="Salir"
+        >
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="game-shell">
+
+
+    <div class="game-header">
+
+      <div id="timer">
+        ⏱ 00:00
+      </div>
+
+      <div id="score">
+        ⭐ 0
+      </div>
+
+    </div>
+
+
+    <div class="rosco-area">
+
+      <svg
+        id="roscoSvg"
+        viewBox="0 0 500 500"
+      ></svg>
+
+      <div class="sejong-wrap">
+
+        <img
+          src="assets/rey_sejong.png"
+          alt="Rey Sejong"
+        >
+
+      </div>
+
+    </div>
+
+
+
+    <section class="question-card">
+
+      <div
+        class="initial-label"
+        id="initialLabel"
+      >
+        Comienza con
+      </div>
+
+      <h1
+        class="clue"
+        id="clue"
+      >
+        Cargando...
+      </h1>
+
+      <div class="example-area">
+
+        <p
+          class="example hidden"
+          id="example"
+        >
+          Ejemplo
+        </p>
+
+      </div>
+
+
+      <form
+        class="answer-form"
+        id="answerForm"
+      >
+
+        <input
+          type="text"
+          class="answer-input"
+          id="answerInput"
+          placeholder="Escribe la respuesta en coreano"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+
+        <div
+          class="feedback"
+          id="feedback"
+        ></div>
+
+
+        <div class="game-buttons">
+
+          <button
+            type="button"
+            class="game-button pass-button"
+            id="passButton"
+          >
+            PASAR
+          </button>
+
+          <button
+            type="submit"
+            class="game-button check-button"
+            id="checkButton"
+          >
+            COMPROBAR
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <p class="demo-note">
+        Demo web · Nivel 1
+      </p>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+
+<div
+  class="modal"
+  id="pauseModal"
+>
+
+  <div class="modal-card">
+
+    <button
+      type="button"
+      class="modal-close"
+      id="pauseCloseButton"
+    >
+
+      <img
+        src="assets/icon_exit.png"
+        alt="Cerrar"
+      >
+
+    </button>
+
+
+    <h2>
+      Partida pausada
+    </h2>
+
+    <p>
+      El tiempo se ha detenido.
+      Continúa cuando quieras.
+    </p>
+
+
+    <div class="modal-buttons">
+
+      <button
+        type="button"
+        class="modal-button modal-primary"
+        id="continueButton"
+      >
+        CONTINUAR
+      </button>
+
+      <button
+        type="button"
+        class="modal-button modal-secondary"
+        id="pauseExitButton"
+      >
+        VOLVER A HANORI
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div
+  class="modal"
+  id="resultModal"
+>
+
+  <div class="modal-card">
+
+    <h2>
+      ¡Partida terminada!
+    </h2>
+
+    <p>
+      Completaste el Rosco Hangul
+      de esta demo.
+    </p>
+
+
+    <div class="result-stats">
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="correctResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Correctas
+        </span>
+
+      </div>
+
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="wrongResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Incorrectas
+        </span>
+
+      </div>
+
+
+      <div class="result-stat">
+
+        <span
+          class="result-number"
+          id="passedResult"
+        >
+          0
+        </span>
+
+        <span class="result-label">
+          Pasadas
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="final-score"
+      id="finalScore"
+    >
+      ⭐ 0 puntos
+    </div>
+
+
+    <div class="modal-buttons">
+
+      <button
+        type="button"
+        class="modal-button modal-primary"
+        id="restartButton"
+      >
+        JUGAR OTRA VEZ
+      </button>
+
+      <button
+        type="button"
+        class="modal-button modal-secondary"
+        id="resultExitButton"
+      >
+        VOLVER A HANORI
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+const consonantOrder = [
+  "ㄱ","ㄲ","ㄴ","ㄷ","ㄸ",
+  "ㄹ","ㅁ","ㅂ","ㅃ","ㅅ",
+  "ㅆ","ㅇ","ㅈ","ㅉ","ㅊ",
+  "ㅋ","ㅌ","ㅍ","ㅎ"
+];
+
+
+let wordBank = [];
+let gameWords = [];
+let statuses = [];
+let passedBefore = [];
+
+let currentIndex = 0;
+let score = 0;
+let seconds = 0;
+let questionStartSeconds = 0;
+
+let timerInterval = null;
+
+let paused = false;
+let finished = false;
+let answerLocked = false;
+
+
+const loadingScreen =
+  document.getElementById("loadingScreen");
+
+const loadingMessage =
+  document.getElementById("loadingMessage");
+
+
+  ;
 
     }
 
