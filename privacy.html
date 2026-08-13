@@ -1,40 +1,865 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9PJM4JK36"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G9PJM4JK36');
+  </script>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Política de Privacidad | Hanori</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="Política de privacidad de Hanori."
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
+
     :root {
-      --pink: #d7a8aa;
-      --pink-soft: #f4e7e5;
-      --blue: #9fb9c6;
-      --blue-soft: #eaf1f4;
-      --cream: #faf7f4;
-      --text: #4f4545;
-      --muted: #857777;
+
+      --background: #fbf8f5;
+
+      --cream: #fbf4ed;
+      --cream-dark: #eee2d8;
+
+      --pink: #d6a4a6;
+      --pink-soft: #f3dddd;
+
+      --blue-soft: #e7f0f6;
+
+      --brown: #604554;
+      --brown-dark: #302528;
+
+      --text: #3f3638;
+      --muted: #7f7173;
+
       --white: #ffffff;
+
+      --shadow:
+        0 18px 50px
+        rgba(80, 60, 65, 0.10);
+
     }
+
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
-      font-family: "Nunito", sans-serif;
-      background:
-        radial-gradient(circle at top left, var(--pink-soft), transparent 35%),
-        radial-gradient(circle at bottom right, var(--blue-soft), transparent 35%),
-        var(--cream);
+
+      font-family:
+        "Nunito",
+        sans-serif;
+
       color: var(--text);
-      line-height: 1.75;
+
+      background:
+
+        radial-gradient(
+          circle at top left,
+          rgba(214,164,166,.20),
+          transparent 34%
+        ),
+
+        radial-gradient(
+          circle at bottom right,
+          rgba(158,186,203,.22),
+          transparent 36%
+        ),
+
+        var(--background);
+
     }
+
+
+    a {
+      color: var(--brown);
+    }
+
+
+
+    .topbar {
+
+      width: 100%;
+      max-width: 1000px;
+
+      margin: auto;
+
+      padding:
+        22px
+        24px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+    }
+
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      color: var(--brown);
+
+      font-weight: 800;
+
+      text-decoration: none;
+
+    }
+
+
+    .brand img {
+
+      width: 48px;
+      height: 48px;
+
+      object-fit: cover;
+
+      border-radius: 14px;
+
+    }
+
+
+    .back {
+
+      padding:
+        10px
+        15px;
+
+      background:
+        var(--cream-dark);
+
+      border-radius: 14px;
+
+      color:
+        var(--brown);
+
+      text-decoration: none;
+
+      font-size: .9rem;
+
+      font-weight: 700;
+
+    }
+
+
+
+    main {
+
+      width: 100%;
+      max-width: 860px;
+
+      margin: auto;
+
+      padding:
+        35px
+        22px
+        90px;
+
+    }
+
+
+    .header {
+
+      margin-bottom: 28px;
+
+      text-align: center;
+
+    }
+
+
+    .header img {
+
+      width: 105px;
+
+      margin-bottom: 15px;
+
+      border-radius: 26px;
+
+    }
+
+
+    .header h1 {
+
+      margin:
+        0
+        0
+        10px;
+
+      color:
+        var(--brown);
+
+      font-size:
+        clamp(
+          2.1rem,
+          5vw,
+          3rem
+        );
+
+    }
+
+
+    .updated {
+
+      margin: 0;
+
+      color:
+        var(--muted);
+
+      font-size: .9rem;
+
+    }
+
+
+
+    .privacy-card {
+
+      padding:
+        44px
+        48px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .88
+        );
+
+      border:
+        1px solid
+        rgba(
+          96,
+          69,
+          84,
+          .08
+        );
+
+      border-radius:
+        30px;
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .intro {
+
+      margin:
+        0
+        0
+        34px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        1.05rem;
+
+      line-height:
+        1.8;
+
+    }
+
+
+    h2 {
+
+      margin:
+        34px
+        0
+        12px;
+
+      color:
+        var(--brown);
+
+      font-size:
+        1.35rem;
+
+    }
+
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+
+    p,
+    li {
+
+      color:
+        var(--muted);
+
+      line-height:
+        1.75;
+
+    }
+
+
+    ul {
+
+      padding-left:
+        22px;
+
+    }
+
+
+    strong {
+
+      color:
+        var(--brown-dark);
+
+    }
+
+
+    .notice {
+
+      margin:
+        28px
+        0;
+
+      padding:
+        20px
+        22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-soft),
+          var(--blue-soft)
+        );
+
+      border-radius:
+        20px;
+
+    }
+
+
+    .notice p {
+
+      margin: 0;
+
+      color:
+        var(--brown);
+
+    }
+
+
+    .contact {
+
+      margin-top:
+        38px;
+
+      padding:
+        25px;
+
+      background:
+        var(--cream);
+
+      border-radius:
+        22px;
+
+      text-align:
+        center;
+
+    }
+
+
+    .contact h2 {
+
+      margin-top: 0;
+
+    }
+
+
+    .contact p {
+
+      margin-bottom: 0;
+
+    }
+
+
+    footer {
+
+      padding:
+        30px
+        20px
+        50px;
+
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+
+      font-size:
+        .85rem;
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .topbar {
+
+        padding:
+          15px
+          16px;
+
+      }
+
+
+      .brand span {
+        display: none;
+      }
+
+
+      .brand img {
+
+        width: 44px;
+        height: 44px;
+
+      }
+
+
+      main {
+
+        padding:
+          20px
+          14px
+          60px;
+
+      }
+
+
+      .privacy-card {
+
+        padding:
+          30px
+          22px;
+
+        border-radius:
+          25px;
+
+      }
+
+
+      .header img {
+        width: 90px;
+      }
+
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+
+      h2 {
+        font-size: 1.22rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <a
+    href="index.html"
+    class="brand"
+  >
+
+    <img
+      src="assets/hanori_logoapp.png"
+      alt="Hanori"
+    >
+
+    <span>
+      Hanori
+    </span>
+
+  </a>
+
+
+  <a
+    href="index.html"
+    class="back"
+  >
+    ← Volver
+  </a>
+
+</header>
+
+
+
+<main>
+
+
+  <div class="header">
+
+    <img
+      src="assets/hanori_logoapp.png"
+      alt="Icono de Hanori"
+    >
+
+    <h1>
+      Política de Privacidad
+    </h1>
+
+    <p class="updated">
+      Última actualización:
+      12 de agosto de 2026
+    </p>
+
+  </div>
+
+
+
+  <article class="privacy-card">
+
+
+    <p class="intro">
+      Esta Política de Privacidad explica
+      cómo Hanori trata la información
+      relacionada con el uso de la
+      aplicación móvil y del sitio web.
+    </p>
+
+
+
+    <h2>
+      1. Sobre Hanori
+    </h2>
+
+    <p>
+      Hanori es una aplicación educativa
+      destinada al aprendizaje y la práctica
+      de vocabulario coreano mediante
+      actividades interactivas.
+    </p>
+
+
+
+    <h2>
+      2. Aplicación móvil Hanori
+    </h2>
+
+    <p>
+      La aplicación móvil de Hanori
+      no requiere la creación de una cuenta
+      ni el inicio de sesión.
+    </p>
+
+    <p>
+      La aplicación no solicita directamente
+      datos como nombre, dirección de correo
+      electrónico, número de teléfono
+      o ubicación.
+    </p>
+
+    <p>
+      El progreso de aprendizaje,
+      las respuestas y las preferencias
+      de uso de la aplicación se almacenan
+      localmente en el dispositivo del usuario.
+    </p>
+
+    <p>
+      Estos datos de progreso no se envían
+      a un servidor de Hanori.
+    </p>
+
+
+
+    <h2>
+      3. Notificaciones
+    </h2>
+
+    <p>
+      Hanori puede utilizar notificaciones
+      locales para ofrecer recordatorios
+      relacionados con la práctica
+      del vocabulario.
+    </p>
+
+    <p>
+      El usuario puede permitir,
+      bloquear o desactivar estas
+      notificaciones desde la configuración
+      de su dispositivo.
+    </p>
+
+
+
+    <h2>
+      4. Sitio web de Hanori
+    </h2>
+
+    <p>
+      El sitio web de Hanori ofrece
+      información sobre la aplicación
+      y una versión de demostración
+      del Rosco Hangul.
+    </p>
+
+    <p>
+      El sitio utiliza Google Analytics 4
+      para obtener estadísticas generales
+      sobre la utilización de la página
+      y comprender mejor cómo se utiliza
+      el sitio.
+    </p>
+
+
+
+    <h2>
+      5. Google Analytics
+    </h2>
+
+    <p>
+      Google Analytics puede recopilar
+      información técnica y estadística,
+      entre ella:
+    </p>
+
+    <ul>
+
+      <li>
+        estadísticas de sesiones
+        y visitas al sitio;
+      </li>
+
+      <li>
+        información aproximada
+        sobre la ubicación geográfica;
+      </li>
+
+      <li>
+        información sobre el navegador
+        y el tipo de dispositivo utilizado;
+      </li>
+
+      <li>
+        páginas visitadas e interacciones
+        generales con el sitio;
+      </li>
+
+      <li>
+        un identificador de cliente
+        asociado a una cookie de Analytics.
+      </li>
+
+    </ul>
+
+
+    <div class="notice">
+
+      <p>
+        <strong>Importante:</strong>
+        Google Analytics se utiliza
+        en el sitio web de Hanori.
+        Esto no significa que la aplicación
+        móvil de Hanori utilice actualmente
+        Google Analytics.
+      </p>
+
+    </div>
+
+
+    <p>
+      Google puede procesar información
+      técnica, incluida la dirección IP,
+      para funciones necesarias del servicio
+      y para obtener información geográfica
+      aproximada.
+    </p>
+
+    <p>
+      Hanori no utiliza Google Analytics
+      con el propósito de identificar
+      personalmente a quienes visitan
+      el sitio.
+    </p>
+
+
+
+    <h2>
+      6. Cookies
+    </h2>
+
+    <p>
+      Google Analytics puede utilizar
+      cookies propias, incluida la cookie
+      <strong>_ga</strong>, para distinguir
+      usuarios y sesiones y generar
+      estadísticas de uso del sitio.
+    </p>
+
+
+
+    <h2>
+      7. Publicidad
+    </h2>
+
+    <p>
+      La aplicación Hanori no contiene
+      anuncios publicitarios.
+    </p>
+
+    <p>
+      El sitio web tampoco muestra
+      publicidad de terceros.
+    </p>
+
+
+
+    <h2>
+      8. Venta de datos personales
+    </h2>
+
+    <p>
+      Hanori no vende datos personales
+      de sus usuarios.
+    </p>
+
+
+
+    <h2>
+      9. Menores de edad
+    </h2>
+
+    <p>
+      Hanori es una herramienta educativa.
+      La aplicación no está diseñada
+      para solicitar deliberadamente
+      información personal a menores
+      de edad.
+    </p>
+
+
+
+    <h2>
+      10. Servicios externos
+    </h2>
+
+    <p>
+      El sitio web se encuentra alojado
+      mediante servicios de infraestructura
+      web y utiliza Google Analytics
+      para la medición de estadísticas
+      de navegación.
+    </p>
+
+
+
+    <h2>
+      11. Cambios en esta política
+    </h2>
+
+    <p>
+      Esta Política de Privacidad
+      podrá actualizarse en el futuro
+      si Hanori incorpora nuevas funciones,
+      servicios o herramientas
+      que modifiquen el tratamiento
+      de información.
+    </p>
+
+    <p>
+      La fecha de la última actualización
+      se indicará al comienzo de esta página.
+    </p>
+
+
+
+    <div class="contact">
+
+      <h2>
+        Contacto
+      </h2>
+
+      <p>
+        Para realizar consultas
+        relacionadas con Hanori
+        o con esta Política de Privacidad:
+      </p>
+
+      <p>
+        <a href="mailto:hanori@outlook.com.ar">
+          hanori@outlook.com.ar
+        </a>
+      </p>
+
+    </div>
+
+
+  </article>
+
+
+</main>
+
+
+
+<footer>
+  © 2026 Hanori · Aprende coreano jugando
+</footer>
+
+
+</body>
+
+</html>
+}
 
     .page {
       max-width: 900px;
