@@ -1310,174 +1310,64 @@
 
 
   <header class="topbar">
-
-    <a
-      href="index.html"
-      class="brand"
-    >
-
-      <img
-        src="assets/v2-cat.webp"
-        alt="Hanori"
-      >
-
-      <span>
-        Hanori
-      </span>
-
-    </a>
-
-
-    <div class="top-actions">
-
-      <button
-        type="button"
-        class="icon-button"
-        id="pauseButton"
-      >
-
-        <img
-          src="assets/icon_pause.png"
-          alt="Pausar"
-        >
-
-      </button>
-
-
-      <button
-        type="button"
-        class="icon-button"
-        id="exitButton"
-      >
-
-        <img
-          src="assets/icon_exit.png"
-          alt="Salir"
-        >
-
-      </button>
-
-    </div>
-
-  </header>
+  <a href="index.html" class="brand" aria-label="Volver al inicio de Hanori">
+    <img src="assets/v2-cat.webp" alt="" width="44" height="44">
+    <span>Hanori</span>
+  </a>
+  <div class="demo-heading" aria-label="Rosco Hangul">
+    <span class="demo-heading-kicker">한글 · HANORI 2.0</span>
+    <strong>Rosco Hangul</strong>
+  </div>
+  <div class="top-actions">
+    <button type="button" class="icon-button" id="pauseButton" aria-label="Pausar la partida" title="Pausar">
+      <img src="assets/icon_pause.png" alt="">
+    </button>
+    <button type="button" class="icon-button" id="exitButton" aria-label="Salir de la demo" title="Salir">
+      <img src="assets/icon_exit.png" alt="">
+    </button>
+  </div>
+</header>
 
 
 
   <main class="game-shell">
-
-
-    <div class="game-header">
-
-      <div id="timer">
-        ⏱ 00:00
-      </div>
-
-      <div id="score">
-        ⭐ 0
-      </div>
-
+  <div class="game-header" role="group" aria-label="Datos de la partida">
+    <span class="demo-level">✿ Nivel 1</span>
+    <div class="game-metrics">
+      <div id="timer" class="metric-pill" aria-label="Tiempo transcurrido">⏱ 00:00</div>
+      <div id="score" class="metric-pill" aria-label="Puntuación">⭐ 0</div>
     </div>
-
-
-    <div class="rosco-area">
-
-      <svg
-        id="roscoSvg"
-        viewBox="0 0 500 500"
-      ></svg>
-
-      <div class="sejong-wrap">
-
-        <img
-          src="assets/rey_sejong.png"
-          alt="Rey Sejong"
-        >
-
-      </div>
-
-    </div>
-
-
-
-    <section class="question-card">
-
-      <div
-        class="initial-label"
-        id="initialLabel"
-      >
-        Comienza con
-      </div>
-
-      <h1
-        class="clue"
-        id="clue"
-      >
-        Cargando...
-      </h1>
-
+  </div>
+  <div class="rosco-area" aria-label="Rosco de consonantes coreanas">
+    <svg id="roscoSvg" viewBox="0 0 500 500" aria-hidden="true"></svg>
+    <div class="rosco-center">
+      <div class="clue-eyebrow">✦ Definición ✦</div>
+      <div class="initial-label" id="initialLabel">Comienza con</div>
+      <h1 class="clue" id="clue" aria-live="polite">Cargando...</h1>
       <div class="example-area">
-
-        <p
-          class="example hidden"
-          id="example"
-        >
-          Ejemplo
-        </p>
-
+        <p class="example hidden" id="example">Ejemplo</p>
       </div>
-
-
-      <form
-        class="answer-form"
-        id="answerForm"
-      >
-
-        <input
-          type="text"
-          class="answer-input"
-          id="answerInput"
-          placeholder="Escribe la respuesta en coreano"
-          autocomplete="off"
-          autocapitalize="off"
-          spellcheck="false"
-        >
-
-        <div
-          class="feedback"
-          id="feedback"
-        ></div>
-
-
-        <div class="game-buttons">
-
-          <button
-            type="button"
-            class="game-button pass-button"
-            id="passButton"
-          >
-            PASAR
-          </button>
-
-          <button
-            type="submit"
-            class="game-button check-button"
-            id="checkButton"
-          >
-            COMPROBAR
-          </button>
-
-        </div>
-
-      </form>
-
-
-      <p class="demo-note">
-        Demo web · Nivel 1
-      </p>
-
-    </section>
-
-  </main>
+    </div>
+  </div>
+  <div class="mascot-row" aria-hidden="true">
+    <img src="assets/v2-cat.webp" class="mascot-cat" alt="">
+    <span class="motivation-bubble">¡Tú puedes! ♡</span>
+  </div>
+  <section class="question-card" aria-label="Tu respuesta">
+    <form class="answer-form" id="answerForm">
+      <label for="answerInput" class="answer-label">¿Cuál es la palabra en coreano?</label>
+      <input type="text" class="answer-input" id="answerInput"
+             placeholder="Escribe tu respuesta en 한글"
+             autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="game-buttons">
+        <button type="button" class="game-button pass-button" id="passButton">Pasar</button>
+        <button type="submit" class="game-button check-button" id="checkButton">Comprobar</button>
+      </div>
+    </form>
+    <p class="demo-note">Una pequeña muestra de Hanori 2.0 · Aprende coreano jugando</p>
+  </section>
+</main>
 
 </div>
 
